@@ -33,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
         parseInitialize();
         initNavigationView();
         initTab();
-        //test
-        //test2
+        //test super test
      /*   ParseQuery<IngredientFromParse> query = ParseQuery.getQuery(IngredientFromParse.class);
         query.findInBackground(new FindCallback<IngredientFromParse>() {
             @Override
