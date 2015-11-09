@@ -9,9 +9,6 @@ public class Recipe extends ParseObject {
     int amount1, amount2, amount3, amount4, amount5;
     ParseObject obj1,obj2,obj3,obj4,obj5,r1,r2;
 
-
-
-
     public IngredientFromParse getIng1() {
         return(IngredientFromParse) getParseObject("ingredient1");
     }
