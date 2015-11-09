@@ -43,6 +43,7 @@ public class IngredientsListFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
         ParseQuery<IngredientFromParse> query = ParseQuery.getQuery(IngredientFromParse.class);
+        query.setLimit(300);
         query.findInBackground(new FindCallback<IngredientFromParse>() {
             @Override
             public void done(List<IngredientFromParse> list, ParseException e) {
