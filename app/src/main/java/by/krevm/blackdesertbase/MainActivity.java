@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         initNavigationView();
         initTab();
         //test
+        //test2
      /*   ParseQuery<IngredientFromParse> query = ParseQuery.getQuery(IngredientFromParse.class);
         query.findInBackground(new FindCallback<IngredientFromParse>() {
             @Override
