@@ -1,11 +1,16 @@
 package by.krevm.blackdesertbase;
 
+import android.hardware.fingerprint.FingerprintManager;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 
 import com.parse.FindCallback;
@@ -19,11 +24,12 @@ import java.util.List;
 import java.util.Map;
 
 import by.krevm.blackdesertbase.Adapters.TabPagerFragmentAdapter;
+import by.krevm.blackdesertbase.Fragments.CookingFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
    ViewPager viewPager;
-
+FragmentManager fragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +38,11 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         parseInitialize();
         initNavigationView();
-        initTab();
+        fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().add(R.id.container,new CookingFragment()).commit();
+      /*  initTab();
         //test super test
-     /*   ParseQuery<IngredientFromParse> query = ParseQuery.getQuery(IngredientFromParse.class);
+        ParseQuery<IngredientFromParse> query = ParseQuery.getQuery(IngredientFromParse.class);
         query.findInBackground(new FindCallback<IngredientFromParse>() {
             @Override
             public void done(List<IngredientFromParse> list, ParseException e) {
@@ -54,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                     System.out.println(list.get(i).getParseObject("ingredient1").getString("Name"));
                 }
             }
-        });*/
+        });
 
     }
 
@@ -65,8 +73,32 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
+    }*/
     }
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
 
+        if (id == R.id.nav_meny_cooking) {
+            // Handle the camera action
+        } else if (id == R.id.nav_meny_cooking) {
+
+        } else if (id == R.id.nav_meny_cooking) {
+
+        } else if (id == R.id.nav_meny_cooking) {
+
+        } else if (id == R.id.nav_meny_cooking) {
+
+        } else if (id == R.id.nav_meny_cooking) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
     private void initNavigationView() {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
     }
