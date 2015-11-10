@@ -14,8 +14,8 @@
         android:background="@mipmap/fon"
         android:paddingLeft="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="11dp"
-        android:paddingTop="11dp" />
+        android:layout_marginTop="10dp"
+        android:paddingTop="10dp" />
 
     <TextView
         android:layout_width="match_parent"
