@@ -27,6 +27,7 @@ public class IngredientsListFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private IngredientsListRVAdapter mAdapter;
+
     public static IngredientsListFragment newInstance() {
         IngredientsListFragment fragment = new IngredientsListFragment();
         return fragment;
@@ -47,12 +48,16 @@ public class IngredientsListFragment extends Fragment {
         query.findInBackground(new FindCallback<IngredientFromParse>() {
             @Override
             public void done(List<IngredientFromParse> list, ParseException e) {
-                ingredients.addAll(list);
+
+
+                for (IngredientFromParse ing : list) {
+                    if (!ing.isResult()) {
+                        System.out.println(ing.getName() + " " + ing.getParseId());
+                        ingredients.add(ing);
+                    }
+                }
                 mAdapter = new IngredientsListRVAdapter(ingredients);
                 mRecyclerView.setAdapter(mAdapter);
-                for (IngredientFromParse ing : list) {
-                    System.out.println(ing.getName() + " " + ing.getParseId());
-                }
             }
         });
 
