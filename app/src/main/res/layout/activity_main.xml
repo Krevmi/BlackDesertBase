@@ -6,7 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="by.krevm.blackdesertbase.MainActivity">
+    tools:context="by.krevm.blackdesertbase.MainActivity"
+    android:background="@mipmap/drawer_layout">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -21,7 +22,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary">
+                android:background="@mipmap/toolbar">
             </android.support.v7.widget.Toolbar>
 
 
@@ -42,6 +43,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/navigation_view_menu"/>
+        app:menu="@menu/navigation_view_menu" />
 
 </android.support.v4.widget.DrawerLayout>
