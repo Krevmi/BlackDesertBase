@@ -18,4 +18,7 @@ public class IngredientFromParse extends ParseObject {
     public ParseFile getImg(){
         return getParseFile("Img");
     }
+    public boolean isResult(){
+      return   getBoolean("result");
+    }
 }

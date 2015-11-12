@@ -17,9 +17,6 @@ import java.util.ArrayList;
 import by.krevm.blackdesertbase.IngredientFromParse;
 import by.krevm.blackdesertbase.R;
 
-/**
- * Created by KrEvM on 07.11.2015.
- */
 public class IngredientsListRVAdapter extends RecyclerView.Adapter<IngredientsListRVAdapter.ViewHolder> {
     ArrayList<IngredientFromParse> ingredients;
 
@@ -52,14 +49,16 @@ public class IngredientsListRVAdapter extends RecyclerView.Adapter<IngredientsLi
     @Override
     public void onBindViewHolder(final IngredientsListRVAdapter.ViewHolder holder, int position) {
         holder.ingredientNameTextView.setText(ingredients.get(position).getName());
-        System.out.println("onBindViewHolder" +ingredients.get(position).getName());
-        ingredients.get(position).getImg().getDataInBackground(new GetDataCallback() {
-            @Override
-            public void done(byte[] bytes, ParseException e) {
-                Bitmap bmp = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-                holder.img.setImageBitmap(bmp);
-            }
-        });
+        System.out.println("onBindViewHolder" + ingredients.get(position).getName());
+        if(ingredients.get(position).getImg()!=null) {
+            ingredients.get(position).getImg().getDataInBackground(new GetDataCallback() {
+                @Override
+                public void done(byte[] bytes, ParseException e) {
+                    Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                    holder.img.setImageBitmap(bmp);
+                }
+            });
+        }
     }
 
     @Override

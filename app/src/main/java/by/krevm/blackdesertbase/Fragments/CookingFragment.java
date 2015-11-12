@@ -14,16 +14,21 @@ import by.krevm.blackdesertbase.R;
 
 
 public class CookingFragment extends Fragment {
+
     ViewPager viewPager;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.cooking_fragment,container,false);
-        viewPager = (ViewPager)view.findViewById(R.id.view_pager);
-        TabLayout tabLayout= (TabLayout)view.findViewById(R.id.tab_layout);
-        TabPagerFragmentAdapter adapter = new TabPagerFragmentAdapter(getActivity().getSupportFragmentManager());
+        View view = inflater.inflate(R.layout.cooking_fragment, container, false);
+        viewPager = (ViewPager) view.findViewById(R.id.view_pager);
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
+        TabPagerFragmentAdapter adapter = new TabPagerFragmentAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+
         return view;
     }
+
+
 }
