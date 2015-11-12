@@ -22,11 +22,16 @@ public class CookingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.cooking_fragment, container, false);
         viewPager = (ViewPager) view.findViewById(R.id.view_pager);
-        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
+       final TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         TabPagerFragmentAdapter adapter = new TabPagerFragmentAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
 
+        tabLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                tabLayout.setupWithViewPager(viewPager);
+            }
+        });
         return view;
     }
 
