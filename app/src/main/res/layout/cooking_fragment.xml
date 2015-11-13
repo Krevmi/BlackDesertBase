@@ -15,7 +15,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@mipmap/toolbar">
+            android:background="#1b2a2f">
         </android.support.v7.widget.Toolbar>
         <android.support.design.widget.TabLayout
             android:layout_below="@id/toolbar"
@@ -25,7 +25,8 @@
             app:tabIndicatorHeight="6dp"
             app:tabSelectedTextColor="@android:color/white"
             app:tabTextColor="@android:color/white"
-            style="@style/AppTabLayout">
+            style="@style/AppTabLayout"
+            android:background="#1b2a2f">
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>
 

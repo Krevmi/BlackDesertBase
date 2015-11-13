@@ -22,7 +22,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@mipmap/toolbar">
+                android:background="#1b2a2f">
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.AppBarLayout>
 
@@ -41,6 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/navigation_view_menu"/>
+        app:menu="@menu/navigation_view_menu"
+        android:background="#1b2a2f" />
 
 </android.support.v4.widget.DrawerLayout>

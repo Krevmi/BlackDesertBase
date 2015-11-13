@@ -15,19 +15,19 @@
     <style name="AppTabLayout" parent="Widget.Design.TabLayout">
 
 
-        <item name="tabIndicatorColor">@color/orange</item>
+        <item name="tabIndicatorColor">#04909f</item>
         <item name="tabIndicatorHeight">4dp</item>
         <item name="tabPaddingStart">6dp</item>
         <item name="tabPaddingEnd">6dp</item>
         <item name="tabBackground">?attr/selectableItemBackground</item>
         <item name="tabTextAppearance">@style/AppTabTextAppearance</item>
-        <item name="tabSelectedTextColor">@color/orange</item>
+        <item name="tabSelectedTextColor">#04909f</item>
     </style>
 
     <style name="AppTabTextAppearance" parent="TextAppearance.Design.Tab">
 
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/orange</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#ddd3a0</item>
         <item name="textAllCaps">false</item>
     </style>
 </resources>
