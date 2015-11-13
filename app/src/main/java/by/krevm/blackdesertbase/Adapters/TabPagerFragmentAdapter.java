@@ -2,15 +2,13 @@ package by.krevm.blackdesertbase.Adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import by.krevm.blackdesertbase.Fragments.DishesListFragment;
 import by.krevm.blackdesertbase.Fragments.IngredientsListFragment;
 
-/**
- * Created by KrEvM on 06.11.2015.
- */
-public class TabPagerFragmentAdapter extends FragmentPagerAdapter {
+public class TabPagerFragmentAdapter extends FragmentStatePagerAdapter {
     String[] tabs;
     public TabPagerFragmentAdapter(FragmentManager fm) {
         super(fm);

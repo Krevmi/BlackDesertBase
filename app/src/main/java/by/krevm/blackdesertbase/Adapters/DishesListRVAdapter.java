@@ -17,9 +17,6 @@ import java.util.ArrayList;
 import by.krevm.blackdesertbase.IngredientFromParse;
 import by.krevm.blackdesertbase.R;
 
-/**
- * Created by KrEvM on 09.11.2015.
- */
 public class DishesListRVAdapter extends RecyclerView.Adapter<DishesListRVAdapter.ViewHolder> {
     ArrayList<IngredientFromParse> ingredients;
 
@@ -30,28 +27,28 @@ public class DishesListRVAdapter extends RecyclerView.Adapter<DishesListRVAdapte
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView ingredientNameTextView;
+        public TextView dishNameTextView;
         public ImageView img;
 
         public ViewHolder(View v) {
             super(v);
-            ingredientNameTextView = (TextView) v.findViewById(R.id.nameIngredientTextView);
+            dishNameTextView = (TextView) v.findViewById(R.id.nameDishTextView);
 
-            img = (ImageView) v.findViewById(R.id.image_ingredient_item);
+            img = (ImageView) v.findViewById(R.id.image_dish_item);
         }
     }
 
     @Override
     public DishesListRVAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.ingredient_list_item_layout, parent, false);
+                .inflate(R.layout.dish_list_item_layout, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
 
     @Override
     public void onBindViewHolder(final DishesListRVAdapter.ViewHolder holder, int position) {
-        holder.ingredientNameTextView.setText(ingredients.get(position).getName());
+        holder.dishNameTextView.setText(ingredients.get(position).getName());
         System.out.println("onBindViewHolder" +ingredients.get(position).getName());
         ingredients.get(position).getImg().getDataInBackground(new GetDataCallback() {
             @Override
