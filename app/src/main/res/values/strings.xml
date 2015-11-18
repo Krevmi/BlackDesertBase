@@ -3,4 +3,5 @@
     <string name="cookery">Кулинария</string>
     <string name="ingredients">Ингредиенты</string>
     <string name="dish">Блюда</string>
+    <string name="acquisition">Способ получения:</string>
 </resources>

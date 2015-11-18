@@ -26,55 +26,22 @@ import java.util.Map;
 import by.krevm.blackdesertbase.Adapters.TabPagerFragmentAdapter;
 import by.krevm.blackdesertbase.Fragments.CookingFragment;
 
-public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
-   ViewPager viewPager;
-FragmentManager fragmentManager;
+    FragmentManager fragmentManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+     //   Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
         parseInitialize();
         initNavigationView();
         fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().add(R.id.container,new CookingFragment()).commit();
-      /*  initTab();
-        //test super test
-        ParseQuery<IngredientFromParse> query = ParseQuery.getQuery(IngredientFromParse.class);
-        query.findInBackground(new FindCallback<IngredientFromParse>() {
-            @Override
-            public void done(List<IngredientFromParse> list, ParseException e) {
-                for (IngredientFromParse ing : list) {
-                    System.out.println(ing.getName() + " " + ing.getParseId());
-                }
-            }
-        });
-
-        ParseQuery<ParseObject> queryRecipe = ParseQuery.getQuery("Recipe");
-        queryRecipe.include("ingredient");
-        queryRecipe.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> list, ParseException e) {
-                for (int i = 0; i < list.size(); i++) {
-
-                    System.out.println(list.get(i).getParseObject("ingredient1").getString("Name"));
-                }
-            }
-        });
-
+        fragmentManager.beginTransaction().add(R.id.container, new CookingFragment()).commit();
     }
 
-    private void initTab() {
-        viewPager = (ViewPager)findViewById(R.id.view_pager);
-       TabLayout tabLayout= (TabLayout)findViewById(R.id.tab_layout);
-        TabPagerFragmentAdapter adapter = new TabPagerFragmentAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
-
-    }*/
-    }
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -99,6 +66,7 @@ FragmentManager fragmentManager;
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     private void initNavigationView() {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
     }

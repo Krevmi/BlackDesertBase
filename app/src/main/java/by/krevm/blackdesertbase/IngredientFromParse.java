@@ -13,21 +13,28 @@ import com.parse.ParseObject;
 
 @ParseClassName("ingredient")
 public class IngredientFromParse extends ParseObject implements Parcelable {
-   private String name;
+    private String name;
     private String parseId;
     private String description;
     private Bitmap bmp;
-    public IngredientFromParse(){
+    private String acquisition;
+
+    public String getAcquisition() {
+        acquisition = getString("acquisition");
+        return acquisition;
+    }
+
+    public IngredientFromParse() {
 
     }
 
     public Bitmap getBmp() {
-        getParseFile("Img").getDataInBackground(new GetDataCallback() {
-            @Override
-            public void done(byte[] bytes, ParseException e) {
-                bmp = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-            }
-        });
+        try {
+            byte[] bytes = getParseFile("Img").getData();
+            bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return bmp;
     }
 
@@ -45,19 +52,23 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
         parseId = getObjectId();
         return parseId;
     }
-    public ParseFile getImg(){
+
+    public ParseFile getImg() {
         return getParseFile("Img");
     }
-    public boolean isResult(){
-      return   getBoolean("result");
+
+    public boolean isResult() {
+        return getBoolean("result");
     }
 
     protected IngredientFromParse(Parcel in) {
         name = in.readString();
         parseId = in.readString();
         description = in.readString();
+        acquisition = in.readString();
         bmp = (Bitmap) in.readValue(Bitmap.class.getClassLoader());
     }
+
     @Override
     public int describeContents() {
         return 0;
@@ -68,6 +79,7 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
         dest.writeString(name);
         dest.writeString(parseId);
         dest.writeString(description);
+        dest.writeString(acquisition);
         dest.writeValue(bmp);
     }
 

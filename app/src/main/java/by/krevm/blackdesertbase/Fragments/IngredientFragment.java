@@ -6,32 +6,39 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import by.krevm.blackdesertbase.IngredientFromParse;
 import by.krevm.blackdesertbase.R;
 
-public class IngredientFragment extends Fragment{
-    TextView nameTextView,descriptionTextView;
+public class IngredientFragment extends Fragment {
+    TextView nameTextView, descriptionTextView, acquisitionTextView;
+    ImageView imageView;
 
-    public static IngredientFragment newInstance(IngredientFromParse ing){
+    public static IngredientFragment newInstance(IngredientFromParse ing) {
         System.out.println("newInstance IngredientFragment");
         Bundle args = new Bundle();
-        args.putParcelable("key",ing);
-       IngredientFragment fragment = new IngredientFragment();
+        args.putParcelable("key", ing);
+        IngredientFragment fragment = new IngredientFragment();
         fragment.setArguments(args);
         return fragment;
     }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.ingredient_fragment,container,false);
-        nameTextView = (TextView)view.findViewById(R.id.ing_name_text);
-        descriptionTextView= (TextView)view.findViewById(R.id.ing_description_text);
+        View view = inflater.inflate(R.layout.ingredient_fragment, container, false);
+        nameTextView = (TextView) view.findViewById(R.id.ing_name_text);
+        descriptionTextView = (TextView) view.findViewById(R.id.ing_description_text);
+        acquisitionTextView = (TextView) view.findViewById(R.id.acquisition_text);
+        imageView = (ImageView) view.findViewById(R.id.ingredient_imageView);
         if (getArguments() != null && getArguments().containsKey("key")) {
             IngredientFromParse ing = getArguments().getParcelable("key");
-           nameTextView.setText(ing.getName());
+            nameTextView.setText(ing.getName());
             descriptionTextView.setText(ing.getDescription());
+            acquisitionTextView.setText(ing.getAcquisition());
+            imageView.setImageBitmap(ing.getBmp());
         }
         return view;
     }
