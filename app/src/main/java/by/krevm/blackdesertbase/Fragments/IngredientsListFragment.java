@@ -22,7 +22,7 @@ import by.krevm.blackdesertbase.IngredientFromParse;
 import by.krevm.blackdesertbase.R;
 
 
-public class IngredientsListFragment extends Fragment {
+public class IngredientsListFragment extends Fragment implements IngredientsListRVAdapter.ItemClickListener{
     ArrayList<IngredientFromParse> ingredients = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -48,20 +48,29 @@ public class IngredientsListFragment extends Fragment {
         query.findInBackground(new FindCallback<IngredientFromParse>() {
             @Override
             public void done(List<IngredientFromParse> list, ParseException e) {
-
-
                 for (IngredientFromParse ing : list) {
                     if (!ing.isResult()) {
                         System.out.println(ing.getName() + " " + ing.getParseId());
                         ingredients.add(ing);
                     }
                 }
-                mAdapter = new IngredientsListRVAdapter(ingredients);
-                mRecyclerView.setAdapter(mAdapter);
+                setAdapter();
             }
         });
 
 
         return view;
+    }
+
+    private void setAdapter() {
+        mAdapter = new IngredientsListRVAdapter(ingredients,getActivity());
+        mAdapter.setClickListener(this);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onClick(View view, IngredientFromParse ing) {
+        System.out.println("Click "+ing.getName());
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,IngredientFragment.newInstance(ing)).addToBackStack("stek").commit();
     }
 }

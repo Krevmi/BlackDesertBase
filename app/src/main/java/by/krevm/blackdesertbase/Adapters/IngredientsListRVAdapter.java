@@ -1,7 +1,10 @@
 package by.krevm.blackdesertbase.Adapters;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,22 +22,37 @@ import by.krevm.blackdesertbase.R;
 
 public class IngredientsListRVAdapter extends RecyclerView.Adapter<IngredientsListRVAdapter.ViewHolder> {
     ArrayList<IngredientFromParse> ingredients;
-
-    public IngredientsListRVAdapter(ArrayList<IngredientFromParse> ingredients) {
+    Context context;
+    public ItemClickListener clickListener;
+    public IngredientsListRVAdapter(ArrayList<IngredientFromParse> ingredients,Context context) {
         System.out.println("Adapter create");
         this.ingredients = new ArrayList<>(ingredients);
         System.out.println(this.ingredients.size());
+        this.context=context;
+
+    }
+    public interface ItemClickListener {
+        void onClick(View view, IngredientFromParse ing);
+    }
+    public void setClickListener(ItemClickListener itemClickListener) {
+        this.clickListener = itemClickListener;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView ingredientNameTextView;
-        public ImageView img;
+    public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        private TextView ingredientNameTextView;
+        private ImageView img;
+
 
         public ViewHolder(View v) {
             super(v);
             ingredientNameTextView = (TextView) v.findViewById(R.id.nameIngredientTextView);
-
             img = (ImageView) v.findViewById(R.id.image_ingredient_item);
+            v.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            clickListener.onClick(v, ingredients.get(getPosition()));
         }
     }
 
@@ -50,6 +68,7 @@ public class IngredientsListRVAdapter extends RecyclerView.Adapter<IngredientsLi
     public void onBindViewHolder(final IngredientsListRVAdapter.ViewHolder holder, int position) {
         holder.ingredientNameTextView.setText(ingredients.get(position).getName());
         System.out.println("onBindViewHolder" + ingredients.get(position).getName());
+
         if(ingredients.get(position).getImg()!=null) {
             ingredients.get(position).getImg().getDataInBackground(new GetDataCallback() {
                 @Override
@@ -58,6 +77,7 @@ public class IngredientsListRVAdapter extends RecyclerView.Adapter<IngredientsLi
                     holder.img.setImageBitmap(bmp);
                 }
             });
+
         }
     }
 

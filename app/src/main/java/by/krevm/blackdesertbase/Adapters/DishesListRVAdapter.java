@@ -50,6 +50,7 @@ public class DishesListRVAdapter extends RecyclerView.Adapter<DishesListRVAdapte
     public void onBindViewHolder(final DishesListRVAdapter.ViewHolder holder, int position) {
         holder.dishNameTextView.setText(ingredients.get(position).getName());
         System.out.println("onBindViewHolder" +ingredients.get(position).getName());
+
         ingredients.get(position).getImg().getDataInBackground(new GetDataCallback() {
             @Override
             public void done(byte[] bytes, ParseException e) {
