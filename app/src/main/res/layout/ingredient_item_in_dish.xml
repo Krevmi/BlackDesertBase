@@ -34,15 +34,13 @@
         android:textSize="16sp"
         android:textColor="#ffffff" />
 
-    <EditText
+    <TextView
+        android:id="@+id/amountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/amountEditText"
-        android:layout_alignBottom="@+id/image_dish_item"
+        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:text="5" />
+        android:text="3" />
 
 </RelativeLayout>

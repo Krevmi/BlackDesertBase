@@ -25,7 +25,7 @@ import by.krevm.blackdesertbase.R;
 import by.krevm.blackdesertbase.Recipe;
 
 
-public class DishesListFragment extends Fragment {
+public class DishesListFragment extends Fragment implements DishesListRVAdapter.ItemClickListener{
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     public static DishesListFragment newInstance(){
@@ -60,12 +60,9 @@ public class DishesListFragment extends Fragment {
                 query.findInBackground(new FindCallback<IngredientFromParse>() {
                     @Override
                     public void done(List<IngredientFromParse> list, ParseException e) {
-                        ArrayList <IngredientFromParse> resList = new ArrayList<>(list);
-                      DishesListRVAdapter  mAdapter = new DishesListRVAdapter(resList);
-                        mRecyclerView.setAdapter(mAdapter);
-                        for (IngredientFromParse ing : list) {
-                            System.out.println(ing.getName());
-                        }
+                        ArrayList<IngredientFromParse> resList = new ArrayList<>(list);
+                        setAdapter(resList);
+
                     }
                 });
             }
@@ -73,5 +70,17 @@ public class DishesListFragment extends Fragment {
 
 
         return view;
+    }
+private void setAdapter(ArrayList<IngredientFromParse>list){
+    DishesListRVAdapter mAdapter = new DishesListRVAdapter(list);
+    mAdapter.setClickListener(this);
+    mRecyclerView.setAdapter(mAdapter);
+}
+    @Override
+    public void onClick(View view, IngredientFromParse ing) {
+        System.out.println("Dish List onClick");
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, DishFragment.newInstance(ing)).addToBackStack("stek").commit();
     }
 }

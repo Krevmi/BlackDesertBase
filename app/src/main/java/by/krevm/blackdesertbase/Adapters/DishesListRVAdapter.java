@@ -19,14 +19,20 @@ import by.krevm.blackdesertbase.R;
 
 public class DishesListRVAdapter extends RecyclerView.Adapter<DishesListRVAdapter.ViewHolder> {
     ArrayList<IngredientFromParse> ingredients;
-
+    public DishesListRVAdapter.ItemClickListener clickListener;
     public DishesListRVAdapter(ArrayList<IngredientFromParse> ingredients) {
         System.out.println("Adapter create");
         this.ingredients = new ArrayList<>(ingredients);
         System.out.println(this.ingredients.size());
     }
+    public interface ItemClickListener {
+        void onClick(View view, IngredientFromParse ing);
+    }
+    public void setClickListener(DishesListRVAdapter.ItemClickListener itemClickListener) {
+        this.clickListener = itemClickListener;
+    }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView dishNameTextView;
         public ImageView img;
 
@@ -35,6 +41,12 @@ public class DishesListRVAdapter extends RecyclerView.Adapter<DishesListRVAdapte
             dishNameTextView = (TextView) v.findViewById(R.id.nameIngredientInDishTextView);
 
             img = (ImageView) v.findViewById(R.id.image_dish_item);
+            v.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            clickListener.onClick(v, ingredients.get(getPosition()));
         }
     }
 
@@ -49,8 +61,6 @@ public class DishesListRVAdapter extends RecyclerView.Adapter<DishesListRVAdapte
     @Override
     public void onBindViewHolder(final DishesListRVAdapter.ViewHolder holder, int position) {
         holder.dishNameTextView.setText(ingredients.get(position).getName());
-        System.out.println("onBindViewHolder" +ingredients.get(position).getName());
-
         ingredients.get(position).getImg().getDataInBackground(new GetDataCallback() {
             @Override
             public void done(byte[] bytes, ParseException e) {
