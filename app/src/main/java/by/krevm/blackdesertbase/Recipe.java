@@ -10,6 +10,7 @@ public class Recipe extends ParseObject {
     ParseObject obj1,obj2,obj3,obj4,obj5,r1,r2;
 
     public IngredientFromParse getIng1() {
+
         return(IngredientFromParse) getParseObject("ingredient1");
     }
 
@@ -55,5 +56,17 @@ public class Recipe extends ParseObject {
 
     public int getAmount5() {
         return getInt("amount5");
+    }
+
+    public boolean hasIngredient(String objectId){
+        String id1,id2,id3,id4,id5;
+        if(getIng1().getObjectId().equals(objectId))return true;
+        if(getIng1().getObjectId().equals(objectId))return true;
+        if(getIng2().getObjectId().equals(objectId))return true;
+        if(getIng3().getObjectId().equals(objectId))return true;
+        if(getIng4().getObjectId().equals(objectId))return true;
+        if(getIng5().getObjectId().equals(objectId))return true;
+
+        return false;
     }
 }

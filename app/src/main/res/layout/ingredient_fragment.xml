@@ -46,4 +46,11 @@
         android:layout_below="@+id/ing_description_text"
         android:layout_toEndOf="@+id/textView"
         android:layout_toRightOf="@+id/textView" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/dishes_list_ii"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true">
+    </android.support.v7.widget.RecyclerView>
 </RelativeLayout>

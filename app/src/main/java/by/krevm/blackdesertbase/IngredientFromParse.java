@@ -18,6 +18,12 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
     private String description;
     private Bitmap bmp;
     private String acquisition;
+    private String groupId;
+
+    public String getGroupId() {
+        groupId = getString("groupId");
+        return groupId;
+    }
 
     public String getAcquisition() {
         acquisition = getString("acquisition");
@@ -62,10 +68,12 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
     }
 
     protected IngredientFromParse(Parcel in) {
+        parseId= in.readString();
         name = in.readString();
         parseId = in.readString();
         description = in.readString();
         acquisition = in.readString();
+        groupId = in.readString();
         bmp = (Bitmap) in.readValue(Bitmap.class.getClassLoader());
     }
 
@@ -76,10 +84,12 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(parseId);
         dest.writeString(name);
         dest.writeString(parseId);
         dest.writeString(description);
         dest.writeString(acquisition);
+        dest.writeString(groupId);
         dest.writeValue(bmp);
     }
 

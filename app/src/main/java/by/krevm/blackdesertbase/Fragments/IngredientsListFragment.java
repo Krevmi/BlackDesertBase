@@ -50,7 +50,7 @@ public class IngredientsListFragment extends Fragment implements IngredientsList
             public void done(List<IngredientFromParse> list, ParseException e) {
                 for (IngredientFromParse ing : list) {
                     if (!ing.isResult()) {
-                        System.out.println(ing.getName() + " " + ing.getParseId());
+                        System.out.println(ing.getGroupId() + " " + ing.getParseId());
                         ingredients.add(ing);
                     }
                 }

@@ -32,7 +32,7 @@ public class DishesListRVAdapter extends RecyclerView.Adapter<DishesListRVAdapte
 
         public ViewHolder(View v) {
             super(v);
-            dishNameTextView = (TextView) v.findViewById(R.id.nameDishTextView);
+            dishNameTextView = (TextView) v.findViewById(R.id.nameIngredientInDishTextView);
 
             img = (ImageView) v.findViewById(R.id.image_dish_item);
         }

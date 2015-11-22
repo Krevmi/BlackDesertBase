@@ -41,8 +41,6 @@ public class IngredientsListRVAdapter extends RecyclerView.Adapter<IngredientsLi
     public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView ingredientNameTextView;
         private ImageView img;
-
-
         public ViewHolder(View v) {
             super(v);
             ingredientNameTextView = (TextView) v.findViewById(R.id.nameIngredientTextView);
