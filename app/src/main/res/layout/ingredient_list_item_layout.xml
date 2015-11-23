@@ -3,7 +3,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:orientation="vertical"
-    android:background="#141e1f">
+    android:background="#EEEEEE">
 
     <ImageView
         android:id="@+id/image_ingredient_item"
@@ -23,7 +23,7 @@
         android:layout_height="match_parent"
         android:text="Large Text"
         android:id="@+id/nameIngredientTextView"
-        android:paddingLeft="80dp"
+        android:paddingLeft="70dp"
         android:focusableInTouchMode="false"
         android:layout_alignParentTop="false"
         android:layout_alignParentRight="false"
@@ -35,6 +35,6 @@
         android:paddingBottom="15dp"
         android:textIsSelectable="false"
         android:password="false"
-        android:textColor="#ffffff" />
+        android:textColor="#212121" />
 
 </RelativeLayout>

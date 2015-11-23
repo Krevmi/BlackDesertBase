@@ -5,4 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="accent_material_dark_1">#04909f</color>
     <color name="orange">#FFA726</color>
+    <color name="inviz_white">#00ffffff</color>
+    <color name="colorPrimary_blue">#0288d1</color>
+    <color name="primary_text_material_dark">#deffffff</color>
+    <color name="primary_text_white">#ffffff</color>
 </resources>

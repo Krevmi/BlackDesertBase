@@ -3,7 +3,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:orientation="vertical"
-    android:background="#141e1f">
+    android:background="#eeeeee">
 
     <ImageView
         android:id="@+id/image_dish_item"
@@ -27,11 +27,11 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:paddingLeft="80dp"
+        android:paddingLeft="70dp"
         android:layout_alignParentBottom="true"
         android:paddingTop="18dp"
         android:paddingBottom="15dp"
         android:textSize="16sp"
-        android:textColor="#ffffff" />
+        android:textColor="#212121" />
 
 </RelativeLayout>

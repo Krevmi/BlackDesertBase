@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:orientation="vertical"
-    android:background="#141e1f">
+    android:background="#eeeeee">
 
     <ImageView
         android:id="@+id/image_dish_item"
@@ -32,7 +32,7 @@
         android:paddingTop="18dp"
         android:paddingBottom="15dp"
         android:textSize="16sp"
-        android:textColor="#ffffff" />
+        android:textColor="#212121" />
 
     <TextView
         android:id="@+id/amountTextView"
