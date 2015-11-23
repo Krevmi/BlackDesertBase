@@ -23,7 +23,7 @@ import by.krevm.blackdesertbase.IngredientFromParse;
 import by.krevm.blackdesertbase.R;
 import by.krevm.blackdesertbase.Recipe;
 
-public class IngredientFragment extends Fragment {
+public class IngredientFragment extends Fragment implements DishesListRVAdapter.ItemClickListener {
     TextView nameTextView, descriptionTextView, acquisitionTextView;
     ImageView imageView;
     RecyclerView recyclerView;
@@ -82,11 +82,7 @@ public class IngredientFragment extends Fragment {
                     @Override
                     public void done(List<IngredientFromParse> list, ParseException e) {
                         ArrayList<IngredientFromParse> resList = new ArrayList<>(list);
-                        DishesListRVAdapter mAdapter = new DishesListRVAdapter(resList);
-                        recyclerView.setAdapter(mAdapter);
-                        for (IngredientFromParse ing : list) {
-                            System.out.println(ing.getName());
-                        }
+                        setAdapter(resList);
                     }
                 });
             }
@@ -94,5 +90,18 @@ public class IngredientFragment extends Fragment {
 
         return view;
 
+    }
+
+    private void setAdapter(ArrayList<IngredientFromParse> dishesList) {
+        DishesListRVAdapter mAdapter = new DishesListRVAdapter(dishesList);
+        mAdapter.setClickListener(this);
+        recyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onClick(View view, IngredientFromParse ing) {
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, DishFragment.newInstance(ing)).addToBackStack("stek").commit();
     }
 }
