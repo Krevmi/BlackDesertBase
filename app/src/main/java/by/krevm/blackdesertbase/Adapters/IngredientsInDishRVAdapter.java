@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ListIterator;
 
 import by.krevm.blackdesertbase.IngredientFromParse;
@@ -16,12 +17,11 @@ import by.krevm.blackdesertbase.R;
 
 public class IngredientsInDishRVAdapter extends RecyclerView.Adapter<IngredientsInDishRVAdapter.ViewHolder> {
     ArrayList<IngredientFromParse> ingredients;
-    ArrayList<Integer> amount;
+    HashMap <String,Integer> amount;
 
-    public IngredientsInDishRVAdapter(ArrayList<IngredientFromParse> ingredients, ArrayList<Integer> amount) {
+    public IngredientsInDishRVAdapter(ArrayList<IngredientFromParse> ingredients,HashMap<String,Integer> amount) {
         this.ingredients = new ArrayList<>(ingredients);
-        this.amount = new ArrayList<>(amount);
-
+        this.amount = new HashMap<>(amount);
     }
 
     @Override
@@ -34,8 +34,7 @@ public class IngredientsInDishRVAdapter extends RecyclerView.Adapter<Ingredients
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.imageView.setImageBitmap(ingredients.get(position).getBmp());
-
-        holder.amountTextView.setText(amount.get(position).toString());
+        holder.amountTextView.setText(amount.get(ingredients.get(position).getParseId()).toString());
         holder.nameTextView.setText(ingredients.get(position).getName());
     }
 
@@ -54,7 +53,6 @@ public class IngredientsInDishRVAdapter extends RecyclerView.Adapter<Ingredients
             nameTextView = (TextView) view.findViewById(R.id.nameIngredientInDishTextView);
             amountTextView = (TextView) view.findViewById(R.id.amountTextView);
             imageView = (ImageView) view.findViewById(R.id.image_dish_item);
-
         }
     }
 }

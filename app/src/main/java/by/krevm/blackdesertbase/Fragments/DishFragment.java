@@ -17,6 +17,7 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import by.krevm.blackdesertbase.Adapters.IngredientsInDishRVAdapter;
@@ -27,7 +28,7 @@ import by.krevm.blackdesertbase.Recipe;
 
 public class DishFragment extends Fragment {
     IngredientFromParse dish;
-   ArrayList<Integer>amount=new ArrayList<>();
+    HashMap<String,Integer>amount = new HashMap<>();
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
 
@@ -50,18 +51,16 @@ public class DishFragment extends Fragment {
         TextView dishName = (TextView) view.findViewById(R.id.dishNameTextView);
         dishImage.setImageBitmap(dish.getBmp());
         dishName.setText(dish.getName());
-        mRecyclerView = (RecyclerView)view.findViewById(R.id.ingredients_list_ii);
-       mRecyclerView.setHasFixedSize(true);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.ingredients_list_ii);
+        mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
         final ArrayList<String> ingredientsId = new ArrayList<String>();
         ParseQuery<Recipe> queryRecipe = ParseQuery.getQuery(Recipe.class);
         queryRecipe.whereEqualTo("result1", dish);
-        System.out.println(dish.getParseId());
         queryRecipe.findInBackground(new FindCallback<Recipe>() {
             @Override
             public void done(List<Recipe> list, ParseException e) {
-                System.out.println(list.isEmpty());
                 for (Recipe recipe : list) {
                     if (!recipe.getIng1().getObjectId().equals("0")) {
                         ingredientsId.add(recipe.getIng1().getObjectId());
@@ -78,13 +77,16 @@ public class DishFragment extends Fragment {
                     if (!recipe.getIng5().getObjectId().equals("0")) {
                         ingredientsId.add(recipe.getIng5().getObjectId());
                     }
-                    System.out.println(recipe.getAmount1());
-                   amount.add(recipe.getAmount1());
-                    amount.add(recipe.getAmount2());
-                    amount.add(recipe.getAmount3());
-                    amount.add(recipe.getAmount4());
-                    amount.add(recipe.getAmount5());
-
+                    if (recipe.getAmount1() != 0)
+                        amount.put(recipe.getIng1().getObjectId(), recipe.getAmount1());
+                    if (recipe.getAmount2() != 0)
+                        amount.put(recipe.getIng2().getObjectId(), recipe.getAmount2());
+                    if (recipe.getAmount3() != 0)
+                        amount.put(recipe.getIng3().getObjectId(), recipe.getAmount3());
+                    if (recipe.getAmount4() != 0)
+                        amount.put(recipe.getIng4().getObjectId(), recipe.getAmount4());
+                    if (recipe.getAmount5() != 0)
+                        amount.put(recipe.getIng5().getObjectId(),recipe.getAmount5());
                 }
                 ParseQuery<IngredientFromParse> query = ParseQuery.getQuery(IngredientFromParse.class);
                 query.whereContainedIn("objectId", ingredientsId);
@@ -92,15 +94,12 @@ public class DishFragment extends Fragment {
                     @Override
                     public void done(List<IngredientFromParse> list, ParseException e) {
                         ArrayList<IngredientFromParse> resList = new ArrayList<>(list);
-                        IngredientsInDishRVAdapter adapter = new IngredientsInDishRVAdapter(resList,amount);
+                        IngredientsInDishRVAdapter adapter = new IngredientsInDishRVAdapter(resList, amount);
                         mRecyclerView.setAdapter(adapter);
-
                     }
                 });
             }
         });
-
-
         return view;
     }
 }
