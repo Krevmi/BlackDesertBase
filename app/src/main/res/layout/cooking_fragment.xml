@@ -22,7 +22,7 @@
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabIndicatorHeight="6dp"
+            app:tabIndicatorHeight="3dp"
             app:tabSelectedTextColor="@android:color/white"
             app:tabTextColor="@android:color/white"
             style="@style/AppTabLayout"
