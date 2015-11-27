@@ -74,4 +74,8 @@ public class DishesListRVAdapter extends RecyclerView.Adapter<DishesListRVAdapte
     public int getItemCount() {
         return ingredients.size();
     }
+    public void setFilteredList(ArrayList<IngredientFromParse> ingredients){
+        this.ingredients=new ArrayList<>(ingredients);
+        notifyDataSetChanged();
+    }
 }

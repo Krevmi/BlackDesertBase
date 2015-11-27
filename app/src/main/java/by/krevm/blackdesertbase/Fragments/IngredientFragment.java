@@ -31,7 +31,7 @@ public class IngredientFragment extends Fragment implements DishesListRVAdapter.
     String groupId;
     String ingredientId;
     String objectId;
-
+    ArrayList<IngredientFromParse> resList = new ArrayList<>();
     public static IngredientFragment newInstance(IngredientFromParse ing) {
         Bundle args = new Bundle();
         args.putParcelable("key", ing);
@@ -66,7 +66,7 @@ public class IngredientFragment extends Fragment implements DishesListRVAdapter.
             ingredientId = groupId;
         } else ingredientId = objectId;
         final ArrayList<String> results = new ArrayList<>();
-        ParseQuery<Recipe> queryRecipe = ParseQuery.getQuery(Recipe.class);
+     /*  ParseQuery<Recipe> queryRecipe = ParseQuery.getQuery(Recipe.class);
         queryRecipe.findInBackground(new FindCallback<Recipe>() {
             @Override
             public void done(List<Recipe> list, ParseException e) {
@@ -87,7 +87,13 @@ public class IngredientFragment extends Fragment implements DishesListRVAdapter.
                 });
             }
         });
-
+*/
+        for (IngredientFromParse ing:CookingFragment.allIngredients){
+            if(ing.hasIngredient(ingredientId)){
+              resList.add(ing);
+            }
+        }
+        setAdapter(resList);
         return view;
 
     }

@@ -4,4 +4,5 @@
     <string name="ingredients">Ингредиенты</string>
     <string name="dish">Блюда</string>
     <string name="acquisition">Способ получения:</string>
+    <string name="action_search">seach</string>
 </resources>

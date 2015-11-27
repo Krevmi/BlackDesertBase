@@ -16,12 +16,16 @@ import by.krevm.blackdesertbase.IngredientFromParse;
 import by.krevm.blackdesertbase.R;
 
 public class IngredientsInDishRVAdapter extends RecyclerView.Adapter<IngredientsInDishRVAdapter.ViewHolder> {
-    ArrayList<IngredientFromParse> ingredients;
-    HashMap <String,Integer> amount;
+    ArrayList<IngredientFromParse> ingredients= new ArrayList<>();
+    HashMap <String,Integer> amount= new HashMap<>();
 
     public IngredientsInDishRVAdapter(ArrayList<IngredientFromParse> ingredients,HashMap<String,Integer> amount) {
-        this.ingredients = new ArrayList<>(ingredients);
-        this.amount = new HashMap<>(amount);
+        System.out.println("Construktor called "+this.ingredients.size());
+       this.ingredients.clear();
+        this.amount.clear();
+        this.ingredients.addAll(ingredients);
+        this.amount.putAll(amount);
+        System.out.println("Construktor called2 " + this.ingredients.size());
     }
 
     @Override

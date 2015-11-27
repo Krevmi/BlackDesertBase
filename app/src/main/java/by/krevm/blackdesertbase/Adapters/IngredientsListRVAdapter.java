@@ -83,4 +83,9 @@ public class IngredientsListRVAdapter extends RecyclerView.Adapter<IngredientsLi
     public int getItemCount() {
         return ingredients.size();
     }
+
+    public void setFilteredList(ArrayList<IngredientFromParse> ingredients){
+        this.ingredients=new ArrayList<>(ingredients);
+        notifyDataSetChanged();
+    }
 }
