@@ -15,8 +15,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:background="@mipmap/fon"
-        android:padding="3dp" />
+        android:background="@mipmap/fon" />
 
     <TextView
         android:layout_width="match_parent"
@@ -32,6 +31,6 @@
         android:paddingTop="18dp"
         android:paddingBottom="15dp"
         android:textSize="16sp"
-        android:textColor="#212121" />
+        android:textColor="#424242" />
 
 </RelativeLayout>
