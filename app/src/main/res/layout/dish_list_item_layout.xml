@@ -21,7 +21,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
         android:id="@+id/nameIngredientInDishTextView"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
@@ -30,7 +29,7 @@
         android:layout_alignParentBottom="true"
         android:paddingTop="18dp"
         android:paddingBottom="15dp"
-        android:textSize="16sp"
-        android:textColor="#424242" />
+        android:textIsSelectable="true"
+        style="@style/List" />
 
 </RelativeLayout>

@@ -20,7 +20,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Large Text"
         android:id="@+id/nameIngredientTextView"
         android:paddingLeft="70dp"
         android:focusableInTouchMode="false"
@@ -29,11 +28,10 @@
         android:layout_alignParentEnd="true"
 
         android:layout_alignParentBottom="false"
-        android:textSize="16sp"
         android:paddingTop="18dp"
         android:paddingBottom="15dp"
         android:textIsSelectable="false"
         android:password="false"
-        android:textColor="#424242" />
+        style="@style/List" />
 
 </RelativeLayout>

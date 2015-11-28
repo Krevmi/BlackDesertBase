@@ -16,4 +16,8 @@
         <item name="android:textColorPrimary">@color/primary_text_white</item>
         <item name="android:colorBackground">#eeeeee</item>
     </style>
+
+    <style name="BDBase" parent="android:Theme.Material.Light" >
+        <item name="android:colorAccent">@color/zeleni</item>
+    </style>
 </resources>

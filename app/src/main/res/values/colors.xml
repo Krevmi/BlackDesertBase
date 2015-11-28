@@ -9,4 +9,8 @@
     <color name="colorPrimary_blue">#0288d1</color>
     <color name="primary_text_material_dark">#deffffff</color>
     <color name="primary_text_white">#ffffff</color>
+    <color name="zeleni">#2E7D32</color>
+    <color name="osn_text_black">#424242</color>
+    <color name="osn_text_white">#FAFAFA</color>
+    <color name="dop_text_black">#616161</color>
 </resources>
