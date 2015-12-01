@@ -20,7 +20,6 @@ public class IngredientsInDishRVAdapter extends RecyclerView.Adapter<Ingredients
     HashMap <String,Integer> amount= new HashMap<>();
 
     public IngredientsInDishRVAdapter(ArrayList<IngredientFromParse> ingredients,HashMap<String,Integer> amount) {
-
        this.ingredients.clear();
         this.amount.clear();
         this.ingredients.addAll(ingredients);

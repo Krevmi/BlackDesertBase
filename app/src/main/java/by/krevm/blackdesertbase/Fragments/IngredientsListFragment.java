@@ -50,7 +50,7 @@ public class IngredientsListFragment extends Fragment implements IngredientsList
         ingredients=new ArrayList<>();
         for (IngredientFromParse ing : CookingFragment.allIngredients) {
             if (!ing.isResult()) {
-                System.out.println(ing.getGroupId() + " " + ing.getParseId());
+
                 ingredients.add(ing);
             }
         }
@@ -66,7 +66,7 @@ public class IngredientsListFragment extends Fragment implements IngredientsList
 
     @Override
     public void onClick(View view, IngredientFromParse ing) {
-        System.out.println("Click " + ing.getName());
+
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, IngredientFragment.newInstance(ing)).addToBackStack("stek").commit();
     }
     @Override

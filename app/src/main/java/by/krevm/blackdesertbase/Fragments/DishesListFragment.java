@@ -35,14 +35,12 @@ public class DishesListFragment extends Fragment implements DishesListRVAdapter.
 
     public static DishesListFragment newInstance() {
         DishesListFragment fragment = new DishesListFragment();
-        System.out.println("Dishes fragment create");
         return fragment;
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        System.out.println("Dishes fragment create");
         View view = inflater.inflate(R.layout.dishes_list_fragment_layout, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.dishes_list);
         RecyclerView.ItemDecoration itemDecoration = new
@@ -76,7 +74,6 @@ public class DishesListFragment extends Fragment implements DishesListRVAdapter.
 
     @Override
     public void onClick(View view, IngredientFromParse ing) {
-        System.out.println("Dish List onClick");
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container, DishFragment.newInstance(ing)).addToBackStack("stek").commit();
@@ -117,6 +114,13 @@ public class DishesListFragment extends Fragment implements DishesListRVAdapter.
     private void showDialog(){
 new FireMissilesDialogFragment().show(getActivity().getSupportFragmentManager(), "");
     }
+
+    @Override
+    public void onDestroy() {
+
+        super.onDestroy();
+    }
+
     public void onFilterList(int position){
         ArrayList<IngredientFromParse> ingFilteredList = new ArrayList<>();
 

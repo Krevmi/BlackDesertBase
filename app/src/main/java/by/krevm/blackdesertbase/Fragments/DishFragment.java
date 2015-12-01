@@ -87,13 +87,12 @@ public class DishFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        System.out.println("Dish ing1 id " + dish.getIng1Id());
-        System.out.println("In list " + resList.size());
+
         for (IngredientFromParse ing : CookingFragment.allIngredients) {
 
             String ing1;
             ing1 = dish.getIng1Id();
-            System.out.println(ing1);
+
             if (ing.getParseId().equals(ing1)) {
                 resList.add(ing);
                 amount.put(ing.getParseId(), dish.getAmount1());
@@ -115,7 +114,7 @@ public class DishFragment extends Fragment {
                 amount.put(ing.getParseId(), dish.getAmount5());
             }
         }
-        System.out.println("After for " + amount.size());
+
         IngredientsInDishRVAdapter adapter = new IngredientsInDishRVAdapter(resList, amount);
         mRecyclerView.setAdapter(adapter);
         return view;

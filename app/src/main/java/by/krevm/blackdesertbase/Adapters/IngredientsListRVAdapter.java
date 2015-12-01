@@ -1,10 +1,10 @@
 package by.krevm.blackdesertbase.Adapters;
 
-import android.app.Activity;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v4.app.FragmentManager;
+
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,9 +25,8 @@ public class IngredientsListRVAdapter extends RecyclerView.Adapter<IngredientsLi
     Context context;
     public ItemClickListener clickListener;
     public IngredientsListRVAdapter(ArrayList<IngredientFromParse> ingredients,Context context) {
-        System.out.println("Adapter create");
         this.ingredients = new ArrayList<>(ingredients);
-        System.out.println(this.ingredients.size());
+
         this.context=context;
 
     }
@@ -65,7 +64,7 @@ public class IngredientsListRVAdapter extends RecyclerView.Adapter<IngredientsLi
     @Override
     public void onBindViewHolder(final IngredientsListRVAdapter.ViewHolder holder, int position) {
         holder.ingredientNameTextView.setText(ingredients.get(position).getName());
-        System.out.println("onBindViewHolder" + ingredients.get(position).getName());
+
 
         if(ingredients.get(position).getImg()!=null) {
             ingredients.get(position).getImg().getDataInBackground(new GetDataCallback() {

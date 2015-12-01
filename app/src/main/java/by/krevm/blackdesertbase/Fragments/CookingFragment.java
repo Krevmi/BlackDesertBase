@@ -34,7 +34,7 @@ public class CookingFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.cooking_fragment, container, false);
-        allIngredients.clear();
+     //   allIngredients.clear();
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         toolbar.setTitle("Кулинария");
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
@@ -43,12 +43,14 @@ public class CookingFragment extends Fragment{
         TabPagerFragmentAdapter adapter = new TabPagerFragmentAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-        ParseQuery<IngredientFromParse> query = ParseQuery.getQuery(IngredientFromParse.class);
-        query.setLimit(1000);
-        try {
-            allIngredients.addAll(query.find());
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if(allIngredients.isEmpty()) {
+            ParseQuery<IngredientFromParse> query = ParseQuery.getQuery(IngredientFromParse.class);
+            query.setLimit(1000);
+            try {
+                allIngredients.addAll(query.find());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
         return view;
     }

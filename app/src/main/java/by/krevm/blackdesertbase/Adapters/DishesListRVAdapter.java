@@ -21,9 +21,7 @@ public class DishesListRVAdapter extends RecyclerView.Adapter<DishesListRVAdapte
     ArrayList<IngredientFromParse> ingredients;
     public ItemClickListener clickListener;
     public DishesListRVAdapter(ArrayList<IngredientFromParse> ingredients) {
-        System.out.println("Adapter create");
         this.ingredients = new ArrayList<>(ingredients);
-        System.out.println(this.ingredients.size());
     }
     public interface ItemClickListener {
         void onClick(View view, IngredientFromParse ing);
