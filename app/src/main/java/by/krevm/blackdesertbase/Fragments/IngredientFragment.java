@@ -3,9 +3,12 @@ package by.krevm.blackdesertbase.Fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -44,6 +47,11 @@ public class IngredientFragment extends Fragment implements DishesListRVAdapter.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.ingredient_fragment, container, false);
+        Toolbar toolbar = (Toolbar)view.findViewById(R.id.toolbar);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         nameTextView = (TextView) view.findViewById(R.id.ing_name_text);
         descriptionTextView = (TextView) view.findViewById(R.id.ing_description_text);
         acquisitionTextView = (TextView) view.findViewById(R.id.acquisition_text);
@@ -54,6 +62,8 @@ public class IngredientFragment extends Fragment implements DishesListRVAdapter.
         recyclerView.setLayoutManager(mLayoutManager);
         if (getArguments() != null && getArguments().containsKey("key")) {
             IngredientFromParse ing = getArguments().getParcelable("key");
+            toolbar.setTitle(ing.getName());
+
             nameTextView.setText(ing.getName());
             descriptionTextView.setText(ing.getDescription());
             acquisitionTextView.setText(ing.getAcquisition());
@@ -65,29 +75,7 @@ public class IngredientFragment extends Fragment implements DishesListRVAdapter.
         if (groupId != null) {
             ingredientId = groupId;
         } else ingredientId = objectId;
-        final ArrayList<String> results = new ArrayList<>();
-     /*  ParseQuery<Recipe> queryRecipe = ParseQuery.getQuery(Recipe.class);
-        queryRecipe.findInBackground(new FindCallback<Recipe>() {
-            @Override
-            public void done(List<Recipe> list, ParseException e) {
-                for (Recipe recipe : list) {
-                    System.out.println(recipe.hasIngredient(ingredientId));
-                    if (recipe.hasIngredient(ingredientId)) {
-                        results.add(recipe.getRes1().getObjectId());
-                    }
-                }
-                ParseQuery<IngredientFromParse> query = ParseQuery.getQuery(IngredientFromParse.class);
-                query.whereContainedIn("objectId", results);
-                query.findInBackground(new FindCallback<IngredientFromParse>() {
-                    @Override
-                    public void done(List<IngredientFromParse> list, ParseException e) {
-                        ArrayList<IngredientFromParse> resList = new ArrayList<>(list);
-                        setAdapter(resList);
-                    }
-                });
-            }
-        });
-*/
+
         for (IngredientFromParse ing:CookingFragment.allIngredients){
             if(ing.hasIngredient(ingredientId)){
               resList.add(ing);
@@ -95,7 +83,6 @@ public class IngredientFragment extends Fragment implements DishesListRVAdapter.
         }
         setAdapter(resList);
         return view;
-
     }
 
     private void setAdapter(ArrayList<IngredientFromParse> dishesList) {

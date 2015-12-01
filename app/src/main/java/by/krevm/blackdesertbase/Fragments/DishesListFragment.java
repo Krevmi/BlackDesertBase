@@ -1,9 +1,14 @@
 package by.krevm.blackdesertbase.Fragments;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -13,11 +18,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-
-import com.parse.GetCallback;
-import com.parse.ParseException;
-import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 
@@ -25,7 +25,6 @@ import by.krevm.blackdesertbase.Adapters.DishesListRVAdapter;
 import by.krevm.blackdesertbase.DividerItemDecoration;
 import by.krevm.blackdesertbase.IngredientFromParse;
 import by.krevm.blackdesertbase.R;
-import by.krevm.blackdesertbase.Recipe;
 
 
 public class DishesListFragment extends Fragment implements DishesListRVAdapter.ItemClickListener, SearchView.OnQueryTextListener {
@@ -59,6 +58,13 @@ public class DishesListFragment extends Fragment implements DishesListRVAdapter.
             }
         }
         setAdapter(resList);
+        FloatingActionButton fab = (FloatingActionButton)view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog();
+            }
+        });
         return view;
     }
 
@@ -107,5 +113,25 @@ public class DishesListFragment extends Fragment implements DishesListRVAdapter.
         }
         mAdapter.setFilteredList(ingFilteredList);
         return false;
+    }
+    private void showDialog(){
+new FireMissilesDialogFragment().show(getActivity().getSupportFragmentManager(), "");
+    }
+    public void onFilterList(int position){
+        ArrayList<IngredientFromParse> ingFilteredList = new ArrayList<>();
+
+    }
+    public class FireMissilesDialogFragment extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("Выберите эффект")
+                    .setItems(R.array.all_effects, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            onFilterList(which);
+                        }
+                    });
+            return builder.create();
+        }
     }
 }

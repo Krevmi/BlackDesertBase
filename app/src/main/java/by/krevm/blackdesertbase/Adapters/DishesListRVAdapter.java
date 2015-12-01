@@ -19,7 +19,7 @@ import by.krevm.blackdesertbase.R;
 
 public class DishesListRVAdapter extends RecyclerView.Adapter<DishesListRVAdapter.ViewHolder> {
     ArrayList<IngredientFromParse> ingredients;
-    public DishesListRVAdapter.ItemClickListener clickListener;
+    public ItemClickListener clickListener;
     public DishesListRVAdapter(ArrayList<IngredientFromParse> ingredients) {
         System.out.println("Adapter create");
         this.ingredients = new ArrayList<>(ingredients);
@@ -28,7 +28,7 @@ public class DishesListRVAdapter extends RecyclerView.Adapter<DishesListRVAdapte
     public interface ItemClickListener {
         void onClick(View view, IngredientFromParse ing);
     }
-    public void setClickListener(DishesListRVAdapter.ItemClickListener itemClickListener) {
+    public void setClickListener(ItemClickListener itemClickListener) {
         this.clickListener = itemClickListener;
     }
 

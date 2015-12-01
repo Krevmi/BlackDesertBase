@@ -5,4 +5,28 @@
     <string name="dish">Блюда</string>
     <string name="acquisition">Способ получения:</string>
     <string name="action_search">seach</string>
+    <string name="navigation_drawer_open">open_nav</string>
+    <string name="navigation_drawer_close">close_naw</string>
+    <string-array name="all_effects">
+        <item>Все</item>
+        <item>Энергия рабочего</item>
+        <item>Восстанавливает сытость</item>
+        <item>Скорость рыбалки</item>
+        <item>Скорость сбора</item>
+        <item>Грузоподъемность</item>
+        <item>Дружба</item>
+        <item>+ к энергии</item>
+        <item>+ к прыжкам</item>
+        <item>+ к опыту</item>
+        <item>+ к выносливости</item>
+        <item>+ к скорости</item>
+        <item>+ к здоровью</item>
+        <item>+ к МР(ярости)</item>
+        <item>+ к скорости атаки</item>
+        <item>+ к скорости маг. атаки</item>
+        <item>+ к атаке</item>
+        <item>+ к крит. удару</item>
+        <item>+ к меткости</item>
+        <item>+ к защите</item>
+    </string-array>
 </resources>
