@@ -9,24 +9,31 @@
     <string name="navigation_drawer_close">close_naw</string>
     <string-array name="all_effects">
         <item>Все</item>
-        <item>Энергия рабочего</item>
-        <item>Восстанавливает сытость</item>
-        <item>Скорость рыбалки</item>
-        <item>Скорость сбора</item>
+        <item>Дружба</item>
+        <item>Восстановление HP</item>
+        <item>Восстановление MP</item>
+        <item>Все виды атаки</item>
+        <item>Все виды защиты</item>
+        <item>Высота прыжка</item>
         <item>Грузоподъемность</item>
         <item>Дружба</item>
-        <item>+ к энергии</item>
-        <item>+ к прыжкам</item>
-        <item>+ к опыту</item>
-        <item>+ к выносливости</item>
-        <item>+ к скорости</item>
-        <item>+ к здоровью</item>
-        <item>+ к МР(ярости)</item>
-        <item>+ к скорости атаки</item>
-        <item>+ к скорости маг. атаки</item>
-        <item>+ к атаке</item>
-        <item>+ к крит. удару</item>
-        <item>+ к меткости</item>
-        <item>+ к защите</item>
+        <item>Доп. урон (Люди)</item>
+        <item>Макс. MP</item>
+        <item>Макс. FP</item>
+        <item>Макс. HP</item>
+        <item>Макс. выносливость</item>
+        <item>Меткость</item>
+        <item>Очки опыта</item>
+        <item>Ремесленный опыт</item>
+        <item>Скорость рыбалки</item>
+        <item>Скорость сбора</item>
+        <item>Скорость атаки</item>
+        <item>Скорость заклинаний</item>
+        <item>Скорость навыков</item>
+        <item>Скорость передвижения</item>
+        <item>Уменьшение повреждений</item>
+        <item>Шанс крит. удара</item>
+        <item>Сытость питомца</item>
+        <item>Энергия рабочего</item>
     </string-array>
 </resources>
