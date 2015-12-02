@@ -66,7 +66,7 @@ public class IngredientFragment extends Fragment implements DishesListRVAdapter.
 
             nameTextView.setText(ing.getName());
             descriptionTextView.setText(ing.getDescription());
-            acquisitionTextView.setText(ing.getAcquisition());
+            acquisitionTextView.setText("Способ получения: "+ing.getAcquisition());
             imageView.setImageBitmap(ing.getBmp());
             groupId = ing.getGroupId();
             objectId = ing.getObjectId();

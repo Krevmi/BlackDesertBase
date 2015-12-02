@@ -58,26 +58,12 @@
         android:layout_toEndOf="@+id/ingredient_imageView" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/acquisition"
-        android:textColor="#424242"
-        android:textSize="14sp"
-        android:paddingLeft="70dp"
-        android:paddingRight="10dp"
-
-        android:layout_below="@+id/ing_description_text"
-        android:layout_toRightOf="@+id/ingredient_imageView"
-        android:layout_toEndOf="@+id/ingredient_imageView" />
-
-    <TextView
         android:id="@+id/acquisition_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
         android:layout_toRightOf="@+id/ingredient_imageView"
-        android:layout_toEndOf="@+id/ingredient_imageView" />
+        android:layout_toEndOf="@+id/ingredient_imageView"
+        android:layout_below="@+id/ing_description_text" />
 
     <TextView
         android:layout_width="wrap_content"

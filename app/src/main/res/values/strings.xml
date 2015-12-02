@@ -9,7 +9,6 @@
     <string name="navigation_drawer_close">close_naw</string>
     <string-array name="all_effects">
         <item>Все</item>
-        <item>Дружба</item>
         <item>Восстановление HP</item>
         <item>Восстановление MP</item>
         <item>Все виды атаки</item>
@@ -22,6 +21,7 @@
         <item>Макс. FP</item>
         <item>Макс. HP</item>
         <item>Макс. выносливость</item>
+        <item>Макс. энергия</item>
         <item>Меткость</item>
         <item>Очки опыта</item>
         <item>Ремесленный опыт</item>

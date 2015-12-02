@@ -123,7 +123,13 @@ new FireMissilesDialogFragment().show(getActivity().getSupportFragmentManager(),
 
     public void onFilterList(int position){
         ArrayList<IngredientFromParse> ingFilteredList = new ArrayList<>();
-
+        String[] allEffects = getResources().getStringArray(R.array.all_effects);
+        for (IngredientFromParse ing: resList){
+            if (ing.hasEffect(allEffects[position])){
+                ingFilteredList.add(ing);
+            }
+        }
+        mAdapter.setFilteredList(ingFilteredList);
     }
     public class FireMissilesDialogFragment extends DialogFragment {
         @Override

@@ -173,8 +173,10 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
     }
 
     public boolean hasEffect(String effect){
-        if(getString("effect").contains(effect)){
+        if(getString("effect")!=null){
+        if(getString("effect").contains(effect)) {
             return true;
+        }
         }return false;
     }
 
