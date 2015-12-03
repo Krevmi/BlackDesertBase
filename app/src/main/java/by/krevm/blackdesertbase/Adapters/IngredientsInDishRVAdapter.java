@@ -49,46 +49,18 @@ public class IngredientsInDishRVAdapter extends RecyclerView.Adapter<Ingredients
         return ingredients.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder{
         TextView nameTextView;
         TextView amountTextView;
         ImageView imageView;
         ImageButton imageButton;
-        private int mOriginalHeight = 0;
-        private boolean mIsViewExpanded = false;
-
         public ViewHolder(View view) {
             super(view);
             nameTextView = (TextView) view.findViewById(R.id.nameIngredientInDishTextView);
             amountTextView = (TextView) view.findViewById(R.id.amountTextView);
             imageView = (ImageView) view.findViewById(R.id.image_dish_item);
             imageButton = (ImageButton)view.findViewById(R.id.imageButton);
-            view.setOnClickListener(this);
         }
 
-        @Override
-        public void onClick(final View v) {
-            if (mOriginalHeight == 0) {
-                mOriginalHeight = v.getHeight();
-            }
-            ValueAnimator valueAnimator;
-            if (!mIsViewExpanded) {
-                mIsViewExpanded = true;
-                valueAnimator = ValueAnimator.ofInt(mOriginalHeight, mOriginalHeight + (int) (mOriginalHeight * 1.5));
-            } else {
-                mIsViewExpanded = false;
-                valueAnimator = ValueAnimator.ofInt(mOriginalHeight + (int) (mOriginalHeight * 1.5), mOriginalHeight);
-            }
-            valueAnimator.setDuration(300);
-            valueAnimator.setInterpolator(new LinearInterpolator());
-            valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                public void onAnimationUpdate(ValueAnimator animation) {
-                    Integer value = (Integer) animation.getAnimatedValue();
-                    v.getLayoutParams().height = value.intValue();
-                    v.requestLayout();
-                }
-            });
-            valueAnimator.start();
-        }
     }
 }
