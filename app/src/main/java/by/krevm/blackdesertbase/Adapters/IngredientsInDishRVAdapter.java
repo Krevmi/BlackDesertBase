@@ -18,12 +18,12 @@ import java.util.ListIterator;
 import by.krevm.blackdesertbase.IngredientFromParse;
 import by.krevm.blackdesertbase.R;
 
-public class IngredientsInDishRVAdapter extends RecyclerView.Adapter<IngredientsInDishRVAdapter.ViewHolder>  {
-    ArrayList<IngredientFromParse> ingredients= new ArrayList<>();
-    HashMap <String,Integer> amount= new HashMap<>();
+public class IngredientsInDishRVAdapter extends RecyclerView.Adapter<IngredientsInDishRVAdapter.ViewHolder> {
+    ArrayList<IngredientFromParse> ingredients = new ArrayList<>();
+    HashMap<String, Integer> amount = new HashMap<>();
 
-    public IngredientsInDishRVAdapter(ArrayList<IngredientFromParse> ingredients,HashMap<String,Integer> amount) {
-       this.ingredients.clear();
+    public IngredientsInDishRVAdapter(ArrayList<IngredientFromParse> ingredients, HashMap<String, Integer> amount) {
+        this.ingredients.clear();
         this.amount.clear();
         this.ingredients.addAll(ingredients);
         this.amount.putAll(amount);
@@ -49,18 +49,16 @@ public class IngredientsInDishRVAdapter extends RecyclerView.Adapter<Ingredients
         return ingredients.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView nameTextView;
         TextView amountTextView;
         ImageView imageView;
-        ImageButton imageButton;
+
         public ViewHolder(View view) {
             super(view);
             nameTextView = (TextView) view.findViewById(R.id.nameIngredientInDishTextView);
             amountTextView = (TextView) view.findViewById(R.id.amountTextView);
             imageView = (ImageView) view.findViewById(R.id.image_dish_item);
-            imageButton = (ImageButton)view.findViewById(R.id.imageButton);
         }
-
     }
 }
