@@ -12,7 +12,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
@@ -27,21 +26,18 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:paddingLeft="80dp"
         android:layout_alignParentBottom="true"
-        android:paddingTop="18dp"
-        android:paddingBottom="15dp"
-        android:textSize="16sp"
-        android:textColor="#212121" />
+        style="@style/TextSingleLine"
+        />
 
     <TextView
         android:id="@+id/amountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#212121"
+        android:text="3"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textColor="#212121"
-        android:text="3" />
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

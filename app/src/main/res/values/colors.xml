@@ -13,4 +13,5 @@
     <color name="osn_text_black">#424242</color>
     <color name="osn_text_white">#FAFAFA</color>
     <color name="dop_text_black">#616161</color>
+    <color name="textBlack">#212121</color>
 </resources>
