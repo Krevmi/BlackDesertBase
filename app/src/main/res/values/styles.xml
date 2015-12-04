@@ -5,7 +5,7 @@
 
         <item name="colorPrimary">@color/colorPrimary_blue</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">#0277BD</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/primary_text_white</item>
         <item name="android:colorBackground">#eeeeee</item>
     </style>
@@ -20,7 +20,7 @@
 
 
     <style name="AppTabLayout" parent="Widget.Design.TabLayout">
-        <item name="tabIndicatorColor">#E65100</item>
+        <item name="tabIndicatorColor">@color/primary_text_white</item>
         <item name="tabIndicatorHeight">4dp</item>
         <item name="tabPaddingStart">6dp</item>
         <item name="tabPaddingEnd">6dp</item>

@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -19,14 +20,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawerLayout;
     FragmentManager fragmentManager;
     Toolbar toolbar;
-
+    NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
            toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         parseInitialize();
         initNavigationView();
         fragmentManager = getSupportFragmentManager();
@@ -60,14 +63,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void initNavigationView() {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-       ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
-        drawerLayout.setDrawerListener(toggle);
-        toggle.syncState();
+     //  ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+    //    drawerLayout.setDrawerListener(toggle);
+      //  toggle.syncState();
+
         NavigationView navigationView = (NavigationView)findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     private void parseInitialize() {
         new ParseAppInitialization();
+    }
+    @Override
+    public void onBackPressed() {
+        System.out.println(" onBackPressed");
+        if (drawerLayout.isDrawerOpen(GravityCompat.START))
+            drawerLayout.closeDrawer(GravityCompat.START);
+        else if (getFragmentManager().getBackStackEntryCount()>0)
+            getFragmentManager().popBackStack();
+        else
+            super.onBackPressed();
     }
 }

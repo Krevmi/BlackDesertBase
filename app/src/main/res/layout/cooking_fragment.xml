@@ -21,7 +21,7 @@
             app:tabSelectedTextColor="@android:color/white"
             app:tabTextColor="@android:color/white"
             style="@style/AppTabLayout"
-            android:background="#FF9800">
+            >
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>
 

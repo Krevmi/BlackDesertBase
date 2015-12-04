@@ -9,7 +9,7 @@
     android:id="@+id/ingr_head"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary">
+   >
     <ImageView
         android:id="@+id/ingredient_imageView"
         android:layout_width="50dp"
