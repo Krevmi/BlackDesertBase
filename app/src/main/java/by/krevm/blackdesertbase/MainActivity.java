@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
            toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
         parseInitialize();
         initNavigationView();
         fragmentManager = getSupportFragmentManager();
@@ -53,19 +53,17 @@ getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+
+        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
     private void initNavigationView() {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+       ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.setDrawerListener(toggle);
         toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        NavigationView navigationView = (NavigationView)findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 

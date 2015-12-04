@@ -67,7 +67,10 @@ public class IngredientsListFragment extends Fragment implements IngredientsList
     @Override
     public void onClick(View view, IngredientFromParse ing) {
 
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, IngredientFragment.newInstance(ing)).addToBackStack("stek").commit();
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container, IngredientFragment.newInstance(ing))
+                .addToBackStack("stek").commit();
     }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {

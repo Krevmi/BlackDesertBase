@@ -19,8 +19,9 @@ import by.krevm.blackdesertbase.IngredientFromParse;
 import by.krevm.blackdesertbase.R;
 
 public class IngredientsInDishRVAdapter extends RecyclerView.Adapter<IngredientsInDishRVAdapter.ViewHolder> {
-    ArrayList<IngredientFromParse> ingredients = new ArrayList<>();
-    HashMap<String, Integer> amount = new HashMap<>();
+    private ArrayList<IngredientFromParse> ingredients = new ArrayList<>();
+    private HashMap<String, Integer> amount = new HashMap<>();
+    public DishesListRVAdapter.ItemClickListener clickListener;
 
     public IngredientsInDishRVAdapter(ArrayList<IngredientFromParse> ingredients, HashMap<String, Integer> amount) {
         this.ingredients.clear();
@@ -28,6 +29,9 @@ public class IngredientsInDishRVAdapter extends RecyclerView.Adapter<Ingredients
         this.ingredients.addAll(ingredients);
         this.amount.putAll(amount);
 
+    }
+    public void setClickListener(DishesListRVAdapter.ItemClickListener itemClickListener) {
+        this.clickListener = itemClickListener;
     }
 
     @Override
@@ -49,7 +53,7 @@ public class IngredientsInDishRVAdapter extends RecyclerView.Adapter<Ingredients
         return ingredients.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView nameTextView;
         TextView amountTextView;
         ImageView imageView;
@@ -59,6 +63,12 @@ public class IngredientsInDishRVAdapter extends RecyclerView.Adapter<Ingredients
             nameTextView = (TextView) view.findViewById(R.id.nameIngredientInDishTextView);
             amountTextView = (TextView) view.findViewById(R.id.amountTextView);
             imageView = (ImageView) view.findViewById(R.id.image_dish_item);
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            clickListener.onClick(v, ingredients.get(getPosition()));
         }
     }
 }

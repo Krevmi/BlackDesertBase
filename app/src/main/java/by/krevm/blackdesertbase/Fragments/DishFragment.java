@@ -20,13 +20,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import by.krevm.blackdesertbase.Adapters.DishesListRVAdapter;
 import by.krevm.blackdesertbase.Adapters.IngredientsInDishRVAdapter;
 import by.krevm.blackdesertbase.IngredientFromParse;
 import by.krevm.blackdesertbase.R;
 import by.krevm.blackdesertbase.Recipe;
 
 
-public class DishFragment extends Fragment {
+public class DishFragment extends Fragment implements DishesListRVAdapter.ItemClickListener {
     private IngredientFromParse dish;
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -116,7 +117,21 @@ public class DishFragment extends Fragment {
         }
 
         IngredientsInDishRVAdapter adapter = new IngredientsInDishRVAdapter(resList, amount);
+        adapter.setClickListener(this);
         mRecyclerView.setAdapter(adapter);
         return view;
+    }
+
+    @Override
+    public void onClick(View view, IngredientFromParse ing) {
+      if(ing.isResult()){
+          getActivity().getSupportFragmentManager()
+                  .beginTransaction()
+                  .replace(R.id.container, DishFragment.newInstance(ing)).addToBackStack("stek").commit();
+      }else {
+          getActivity().getSupportFragmentManager()
+                  .beginTransaction()
+                  .replace(R.id.container, IngredientFragment.newInstance(ing)).addToBackStack("stek").commit();
+      }
     }
 }

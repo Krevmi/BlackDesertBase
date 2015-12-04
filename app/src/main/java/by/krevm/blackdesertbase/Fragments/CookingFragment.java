@@ -34,10 +34,7 @@ public class CookingFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.cooking_fragment, container, false);
-     //   allIngredients.clear();
-        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        toolbar.setTitle("Кулинария");
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+       ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Кулинария");
         viewPager = (ViewPager) view.findViewById(R.id.view_pager);
         final TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         TabPagerFragmentAdapter adapter = new TabPagerFragmentAdapter(getChildFragmentManager());

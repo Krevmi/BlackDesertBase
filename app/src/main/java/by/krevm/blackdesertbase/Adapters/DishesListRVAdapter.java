@@ -20,6 +20,7 @@ import by.krevm.blackdesertbase.R;
 public class DishesListRVAdapter extends RecyclerView.Adapter<DishesListRVAdapter.ViewHolder> {
     ArrayList<IngredientFromParse> ingredients;
     public ItemClickListener clickListener;
+
     public DishesListRVAdapter(ArrayList<IngredientFromParse> ingredients) {
         this.ingredients = new ArrayList<>(ingredients);
     }
@@ -37,7 +38,6 @@ public class DishesListRVAdapter extends RecyclerView.Adapter<DishesListRVAdapte
         public ViewHolder(View v) {
             super(v);
             dishNameTextView = (TextView) v.findViewById(R.id.nameIngredientInDishTextView);
-
             img = (ImageView) v.findViewById(R.id.image_dish_item);
             v.setOnClickListener(this);
         }
