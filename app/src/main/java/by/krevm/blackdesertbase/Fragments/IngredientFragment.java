@@ -51,7 +51,7 @@ public class IngredientFragment extends Fragment implements DishesListRVAdapter.
         setHasOptionsMenu(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        nameTextView = (TextView) view.findViewById(R.id.ing_name_text);
+       // nameTextView = (TextView) view.findViewById(R.id.ing_name_text);
         descriptionTextView = (TextView) view.findViewById(R.id.ing_description_text);
         acquisitionTextView = (TextView) view.findViewById(R.id.acquisition_text);
         imageView = (ImageView) view.findViewById(R.id.ingredient_imageView);
@@ -63,7 +63,7 @@ public class IngredientFragment extends Fragment implements DishesListRVAdapter.
             IngredientFromParse ing = getArguments().getParcelable("key");
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(ing.getName());
 
-            nameTextView.setText(ing.getName());
+          //  nameTextView.setText(ing.getName());
             descriptionTextView.setText(ing.getDescription());
             acquisitionTextView.setText("Способ получения: "+ing.getAcquisition());
             imageView.setImageBitmap(ing.getBmp());

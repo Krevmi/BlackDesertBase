@@ -19,5 +19,6 @@
 
     <style name="BDBase" parent="android:Theme.Material.Light" >
         <item name="android:colorAccent">@color/zeleni</item>
+        <item name="android:statusBarColor">@color/orange</item>
     </style>
 </resources>
