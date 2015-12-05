@@ -52,13 +52,14 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
         if (getArguments() != null && getArguments().containsKey("key")) {
             dish = getArguments().getParcelable("key");
         }
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(dish.getName());
         HashMap<String, Integer> amount = new HashMap<>();
         ArrayList<IngredientFromParse> resList = new ArrayList<>();
         TextView effect1TextView = (TextView) view.findViewById(R.id.effect1);
         TextView effect2TextView = (TextView) view.findViewById(R.id.effect2);
         TextView effect3TextView = (TextView) view.findViewById(R.id.effect3);
         TextView durationTextView = (TextView) view.findViewById(R.id.duration);
-        durationTextView.setText(dish.getDuration() + " мин.");
+        durationTextView.setText("Время действия: "+dish.getDuration() + " мин.");
         String[] effects = dish.getEffects();
         if (effects != null) {
             switch (effects.length) {
@@ -81,13 +82,18 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
                     break;
                 }
             }
+        }else {
+            effect1TextView.setVisibility(View.GONE);
+            effect2TextView.setVisibility(View.GONE);
+            effect3TextView.setVisibility(View.GONE);
+            durationTextView.setVisibility(View.GONE);
         }
         amount.clear();
         resList.clear();
         ImageView dishImage = (ImageView) view.findViewById(R.id.imageViewDishFragment);
-        TextView dishName = (TextView) view.findViewById(R.id.dishNameTextView);
+        TextView dishDiscription = (TextView) view.findViewById(R.id.discription_dish);
         dishImage.setImageBitmap(dish.getBmp());
-        dishName.setText(dish.getName());
+        dishDiscription.setText(dish.getDescription());
         mRecyclerView = (RecyclerView) view.findViewById(R.id.ingredients_list_ii);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
