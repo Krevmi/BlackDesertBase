@@ -26,7 +26,7 @@ import by.krevm.blackdesertbase.IngredientFromParse;
 import by.krevm.blackdesertbase.R;
 
 
-public class CookingFragment extends Fragment{
+public class CookingFragment extends Fragment {
     public static ArrayList<IngredientFromParse> allIngredients = new ArrayList<>();
     ViewPager viewPager;
 
@@ -34,13 +34,15 @@ public class CookingFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.cooking_fragment, container, false);
-       ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Кулинария");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Кулинария");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         viewPager = (ViewPager) view.findViewById(R.id.view_pager);
         final TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         TabPagerFragmentAdapter adapter = new TabPagerFragmentAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-        if(allIngredients.isEmpty()) {
+        if (allIngredients.isEmpty()) {
             ParseQuery<IngredientFromParse> query = ParseQuery.getQuery(IngredientFromParse.class);
             query.setLimit(1000);
             try {

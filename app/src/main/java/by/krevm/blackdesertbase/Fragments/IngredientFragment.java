@@ -51,9 +51,6 @@ public class IngredientFragment extends Fragment implements DishesListRVAdapter.
         setHasOptionsMenu(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-
         nameTextView = (TextView) view.findViewById(R.id.ing_name_text);
         descriptionTextView = (TextView) view.findViewById(R.id.ing_description_text);
         acquisitionTextView = (TextView) view.findViewById(R.id.acquisition_text);

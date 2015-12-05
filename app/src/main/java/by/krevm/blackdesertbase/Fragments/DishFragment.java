@@ -3,9 +3,11 @@ package by.krevm.blackdesertbase.Fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -44,6 +46,9 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dish_fragment, container, false);
+        setHasOptionsMenu(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if (getArguments() != null && getArguments().containsKey("key")) {
             dish = getArguments().getParcelable("key");
         }
@@ -53,9 +58,9 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
         TextView effect2TextView = (TextView) view.findViewById(R.id.effect2);
         TextView effect3TextView = (TextView) view.findViewById(R.id.effect3);
         TextView durationTextView = (TextView) view.findViewById(R.id.duration);
-        durationTextView.setText(dish.getDuration()+" мин.");
+        durationTextView.setText(dish.getDuration() + " мин.");
         String[] effects = dish.getEffects();
-        if(effects!=null) {
+        if (effects != null) {
             switch (effects.length) {
                 case 1: {
                     effect1TextView.setText(effects[0]);
@@ -75,7 +80,6 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
                     effect3TextView.setText(effects[2]);
                     break;
                 }
-
             }
         }
         amount.clear();
@@ -124,14 +128,24 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
 
     @Override
     public void onClick(View view, IngredientFromParse ing) {
-      if(ing.isResult()){
-          getActivity().getSupportFragmentManager()
-                  .beginTransaction()
-                  .replace(R.id.container, DishFragment.newInstance(ing)).addToBackStack("stek").commit();
-      }else {
-          getActivity().getSupportFragmentManager()
-                  .beginTransaction()
-                  .replace(R.id.container, IngredientFragment.newInstance(ing)).addToBackStack("stek").commit();
-      }
+        if (ing.isResult()) {
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container, DishFragment.newInstance(ing)).addToBackStack("stek").commit();
+        } else {
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container, IngredientFragment.newInstance(ing)).addToBackStack("stek").commit();
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                getActivity().getSupportFragmentManager().popBackStack();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
