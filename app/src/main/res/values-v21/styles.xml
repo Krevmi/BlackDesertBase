@@ -11,8 +11,8 @@
         <item name="colorPrimary">@color/colorPrimary_blue</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">#0277BD</item>
-        <item name="android:statusBarColor">#0288D1</item>
-        <item name="android:navigationBarColor">#0288D1</item>
+        <item name="android:statusBarColor">@color/colorPrimary_blue</item>
+        <item name="android:navigationBarColor">@color/colorPrimary_blue</item>
         <item name="android:textColorPrimary">@color/primary_text_white</item>
         <item name="android:colorBackground">#eeeeee</item>
     </style>

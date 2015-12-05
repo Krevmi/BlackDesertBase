@@ -10,7 +10,7 @@
         android:id="@+id/dish_head"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-       >
+        android:background="@color/light_blue">
 
         <ImageView
             android:id="@+id/imageViewDishFragment"
@@ -19,7 +19,6 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:background="@mipmap/fon" />
@@ -28,62 +27,88 @@
             android:id="@+id/discription_dish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:paddingLeft="70dp"
-            android:paddingTop="0dp"
+            android:paddingLeft="10dp"
             android:text="Описание блюда"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#212121"
+            android:textColor="@color/osn_text_white"
             android:textIsSelectable="false"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/imageViewDishFragment"
+            android:layout_toEndOf="@+id/imageViewDishFragment"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentEnd="false"
+            android:paddingRight="10dp" />
 
         <TextView
             android:id="@+id/effect1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/discription_dish"
-            android:layout_toEndOf="@+id/imageViewDishFragment"
-            android:layout_toRightOf="@+id/imageViewDishFragment"
             android:text="Эффект1"
-            android:textColor="#212121" />
+            android:textColor="@color/osn_text_white"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:layout_below="@+id/imageViewDishFragment"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/effect2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Эффект2"
+            android:textColor="@color/osn_text_white"
+            android:layout_below="@+id/effect1"
             android:layout_alignLeft="@+id/effect1"
             android:layout_alignStart="@+id/effect1"
-            android:layout_below="@+id/effect1"
-            android:text="Эффект2"
-            android:textColor="#212121" />
+            android:textSize="15sp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="2dp" />
 
         <TextView
             android:id="@+id/effect3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/effect2"
-            android:layout_toEndOf="@+id/imageViewDishFragment"
-            android:layout_toRightOf="@+id/imageViewDishFragment"
             android:text="Эффект3"
-            android:textColor="#212121" />
+            android:textColor="@color/osn_text_white"
+            android:layout_below="@+id/effect2"
+            android:layout_alignLeft="@+id/effect2"
+            android:layout_alignStart="@+id/effect2"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="2dp"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="90 мин"
-            android:textColor="#212121"
-            android:layout_below="@+id/imageViewDishFragment"
+            android:textColor="@color/osn_text_white"
+            android:layout_below="@+id/effect3"
             android:layout_alignLeft="@+id/effect3"
-            android:layout_alignStart="@+id/effect3" />
+            android:layout_alignStart="@+id/effect3"
+            android:textSize="15sp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="4dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Для приготовления необхадимо:"
+            android:textColor="@color/osn_text_white"
             android:layout_below="@+id/duration"
-            android:textColor="@color/osn_text_black"/>
+            android:layout_alignLeft="@+id/duration"
+            android:layout_alignStart="@+id/duration"
+            android:paddingLeft="10dp"
+            android:paddingTop="6dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="4dp"
+            android:textSize="15sp" />
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
@@ -92,8 +117,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/dish_head"
-        android:paddingTop="5dp">
+        android:layout_below="@+id/dish_head">
 
     </android.support.v7.widget.RecyclerView>
 
