@@ -37,8 +37,6 @@
             android:layout_toRightOf="@+id/imageViewDishFragment"
             android:layout_toEndOf="@+id/imageViewDishFragment"
             android:layout_marginTop="5dp"
-            android:layout_alignParentStart="false"
-            android:layout_alignParentEnd="false"
             android:paddingRight="10dp" />
 
         <TextView
@@ -99,7 +97,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Для приготовления необхадимо:"
+            android:text="Для приготовления "
             android:textColor="@color/osn_text_white"
             android:layout_below="@+id/duration"
             android:layout_alignLeft="@+id/duration"
@@ -108,7 +106,34 @@
             android:paddingTop="6dp"
             android:paddingRight="10dp"
             android:paddingBottom="4dp"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:id="@+id/textView3" />
+        <EditText
+            android:id="@+id/amountEdit"
+            android:text="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_alignBaseline="@+id/textView3"
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_toRightOf="@+id/textView3"
+            android:focusableInTouchMode="true"
+            android:selectAllOnFocus="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="шт. необходимо:"
+            android:textColor="@color/osn_text_white"
+            android:paddingLeft="10dp"
+            android:paddingTop="6dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="4dp"
+            android:textSize="15sp"
+            android:layout_below="@+id/duration"
+            android:layout_toRightOf="@+id/amountEdit"
+            android:layout_toEndOf="@+id/amountEdit" />
+
+
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView

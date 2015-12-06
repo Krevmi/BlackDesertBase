@@ -1,5 +1,9 @@
 package by.krevm.blackdesertbase;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +19,7 @@ import com.parse.Parse;
 import com.parse.ParseObject;
 
 import by.krevm.blackdesertbase.Fragments.CookingFragment;
+import by.krevm.blackdesertbase.Fragments.MainActivityNoInternet;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
@@ -24,9 +29,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+
+        } else {
+            Intent intent = new Intent(this, MainActivityNoInternet.class);
+            startActivity(intent);
+            finish();
+        }
         setContentView(R.layout.activity_main);
            toolbar = (Toolbar) findViewById(R.id.toolbar);
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);

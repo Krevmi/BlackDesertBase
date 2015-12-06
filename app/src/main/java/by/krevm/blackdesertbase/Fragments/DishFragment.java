@@ -6,10 +6,13 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -59,7 +62,9 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
         TextView effect2TextView = (TextView) view.findViewById(R.id.effect2);
         TextView effect3TextView = (TextView) view.findViewById(R.id.effect3);
         TextView durationTextView = (TextView) view.findViewById(R.id.duration);
-        durationTextView.setText("Время действия: "+dish.getDuration() + " мин.");
+        EditText amountDishEditText = (EditText) view.findViewById(R.id.amountEdit);
+
+        durationTextView.setText("Время действия: " + dish.getDuration() + " мин.");
         String[] effects = dish.getEffects();
         if (effects != null) {
             switch (effects.length) {
@@ -82,7 +87,7 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
                     break;
                 }
             }
-        }else {
+        } else {
             effect1TextView.setVisibility(View.GONE);
             effect2TextView.setVisibility(View.GONE);
             effect3TextView.setVisibility(View.GONE);
@@ -126,9 +131,28 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
             }
         }
 
-        IngredientsInDishRVAdapter adapter = new IngredientsInDishRVAdapter(resList, amount);
+        final IngredientsInDishRVAdapter adapter = new IngredientsInDishRVAdapter(resList, amount);
         adapter.setClickListener(this);
         mRecyclerView.setAdapter(adapter);
+        amountDishEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.length()!=0) {
+                    int am = Integer.parseInt(s.toString());
+                    adapter.setAmountDish(am);
+                }
+            }
+        });
         return view;
     }
 

@@ -1,6 +1,7 @@
 package by.krevm.blackdesertbase.Adapters;
 
 import android.animation.ValueAnimator;
+import android.renderscript.Sampler;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ public class IngredientsInDishRVAdapter extends RecyclerView.Adapter<Ingredients
     private ArrayList<IngredientFromParse> ingredients = new ArrayList<>();
     private HashMap<String, Integer> amount = new HashMap<>();
     public DishesListRVAdapter.ItemClickListener clickListener;
+    int amountDish=1;
 
     public IngredientsInDishRVAdapter(ArrayList<IngredientFromParse> ingredients, HashMap<String, Integer> amount) {
         this.ingredients.clear();
@@ -44,8 +46,13 @@ public class IngredientsInDishRVAdapter extends RecyclerView.Adapter<Ingredients
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.imageView.setImageBitmap(ingredients.get(position).getBmp());
-        holder.amountTextView.setText(amount.get(ingredients.get(position).getParseId()).toString());
+        int amountIng = amount.get(ingredients.get(position).getParseId())*amountDish;
+        holder.amountTextView.setText(String.valueOf(amountIng));
         holder.nameTextView.setText(ingredients.get(position).getName());
+    }
+    public void setAmountDish(int amountDish){
+        this.amountDish=amountDish;
+        notifyDataSetChanged();
     }
 
     @Override
