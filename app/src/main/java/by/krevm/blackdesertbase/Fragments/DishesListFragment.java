@@ -32,6 +32,11 @@ public class DishesListFragment extends Fragment implements DishesListRVAdapter.
     private RecyclerView.LayoutManager mLayoutManager;
     DishesListRVAdapter mAdapter;
     ArrayList<IngredientFromParse> resList;
+    int filterPosition = 0;
+
+    public DishesListFragment() {
+        setArguments(new Bundle());
+    }
 
     public static DishesListFragment newInstance() {
         DishesListFragment fragment = new DishesListFragment();
@@ -56,13 +61,16 @@ public class DishesListFragment extends Fragment implements DishesListRVAdapter.
             }
         }
         setAdapter(resList);
-        FloatingActionButton fab = (FloatingActionButton)view.findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showDialog();
             }
         });
+        if (getArguments() != null && getArguments().containsKey("filter")) {
+            onFilterList(getArguments().getInt("filter"));
+        }
         return view;
     }
 
@@ -111,22 +119,23 @@ public class DishesListFragment extends Fragment implements DishesListRVAdapter.
         mAdapter.setFilteredList(ingFilteredList);
         return false;
     }
-    private void showDialog(){
-new FireMissilesDialogFragment().show(getActivity().getSupportFragmentManager(), "");
+
+    private void showDialog() {
+        new FireMissilesDialogFragment().show(getActivity().getSupportFragmentManager(), "");
     }
 
     @Override
-    public void onDestroy() {
-
-        super.onDestroy();
+    public void onPause() {
+        super.onPause();
+        getArguments().putInt("filter", filterPosition);
     }
 
-    public void onFilterList(int position){
+    public void onFilterList(int position) {
         ArrayList<IngredientFromParse> ingFilteredList = new ArrayList<>();
-        if (position==0){
+        if (position == 0) {
             mAdapter.setFilteredList(resList);
         }
-        if(position!=0) {
+        if (position != 0) {
             String[] allEffects = getResources().getStringArray(R.array.all_effects);
             for (IngredientFromParse ing : resList) {
                 if (ing.hasEffect(allEffects[position])) {
@@ -136,6 +145,7 @@ new FireMissilesDialogFragment().show(getActivity().getSupportFragmentManager(),
             mAdapter.setFilteredList(ingFilteredList);
         }
     }
+
     public class FireMissilesDialogFragment extends DialogFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -143,6 +153,7 @@ new FireMissilesDialogFragment().show(getActivity().getSupportFragmentManager(),
             builder.setTitle("Выберите эффект")
                     .setItems(R.array.all_effects, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
+                            filterPosition = which;
                             onFilterList(which);
                         }
                     });

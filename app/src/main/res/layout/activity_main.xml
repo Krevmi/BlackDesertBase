@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
-
+app:theme="@style/AppBarWhiteText"
                 />
 
         </android.support.design.widget.AppBarLayout>
@@ -41,6 +41,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#0288D1"
+
         app:menu="@menu/navigation_view_menu" />
 </android.support.v4.widget.DrawerLayout>
