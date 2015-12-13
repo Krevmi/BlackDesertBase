@@ -23,6 +23,12 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
     private int amount1, amount2, amount3, amount4, amount5;
     private String[] effects;
     private String duration;
+    private String useIn;
+
+    public String getUseIn() {
+        useIn=getString("useIn");
+        return useIn;
+    }
 
     public String getDuration() {
         duration= getString("duration");

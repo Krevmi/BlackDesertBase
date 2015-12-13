@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Black Desert Base</string>
     <string name="cookery">Кулинария</string>
+    <string name="alchemy">Алхимия</string>
     <string name="ingredients">Ингредиенты</string>
     <string name="dish">Блюда</string>
     <string name="acquisition">Способ получения:</string>

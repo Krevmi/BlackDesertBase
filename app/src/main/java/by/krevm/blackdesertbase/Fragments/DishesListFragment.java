@@ -1,5 +1,6 @@
 package by.krevm.blackdesertbase.Fragments;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -55,7 +56,7 @@ public class DishesListFragment extends Fragment implements DishesListRVAdapter.
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
         resList = new ArrayList<>();
-        for (IngredientFromParse ing : CookingFragment.allIngredients) {
+        for (IngredientFromParse ing : CookingFragment.getAllIngredients()) {
             if (ing.isResult()) {
                 resList.add(ing);
             }
@@ -146,6 +147,7 @@ public class DishesListFragment extends Fragment implements DishesListRVAdapter.
         }
     }
 
+    @SuppressLint("ValidFragment")
     public class FireMissilesDialogFragment extends DialogFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {

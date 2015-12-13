@@ -12,7 +12,7 @@ public class TabPagerFragmentAdapter extends FragmentStatePagerAdapter {
     String[] tabs;
     public TabPagerFragmentAdapter(FragmentManager fm) {
         super(fm);
-        tabs = new String[]{"Ингредиенты","Блюда"};
+        tabs = new String[]{"Результат","Ингредиенты"};
     }
 
     @Override
@@ -23,8 +23,8 @@ public class TabPagerFragmentAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position){
-            case 0:return IngredientsListFragment.newInstance();
-            case 1:return DishesListFragment.newInstance();
+            case 0:return DishesListFragment.newInstance();
+            case 1:return IngredientsListFragment.newInstance();
         }
         return null;
     }
