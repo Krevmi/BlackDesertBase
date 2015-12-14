@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
+        if(networkInfo != null && networkInfo.isConnected()) {
         } else {
             Intent intent = new Intent(this, MainActivityNoInternet.class);
             startActivity(intent);

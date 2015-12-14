@@ -29,6 +29,7 @@ public class CookingFragment extends Fragment {
     ViewPager viewPager;
     static int titleId;
     Tracker mTracker;
+    TabPagerFragmentAdapter adapter;
     public static CookingFragment newInstance(int titleId) {
         Bundle args = new Bundle();
         args.putInt("titleID", titleId);
@@ -46,6 +47,7 @@ public class CookingFragment extends Fragment {
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         if (getArguments() != null && getArguments().containsKey("titleID")) {
             titleId = getArguments().getInt("titleID");
+
             actionBar.setTitle(titleId);
             mTracker.setScreenName("Fragment " + getString(titleId));
             mTracker.send(new HitBuilders.ScreenViewBuilder().build());
@@ -55,7 +57,14 @@ public class CookingFragment extends Fragment {
         actionBar.setDisplayHomeAsUpEnabled(false);
         viewPager = (ViewPager) view.findViewById(R.id.view_pager);
         final TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
-        TabPagerFragmentAdapter adapter = new TabPagerFragmentAdapter(getChildFragmentManager());
+        if(titleId==R.string.cookery){
+            String[] tabs = new String[]{"Блюда","Ингредиенты"};
+            adapter = new TabPagerFragmentAdapter(getChildFragmentManager(),tabs);
+        }else if(titleId == R.string.alchemy){
+            String[] tabs = new String[]{"Зелья","Камни","Реагенты","Ингредиенты"};
+            adapter = new TabPagerFragmentAdapter(getChildFragmentManager(),tabs);
+        }
+
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         if (allIngredients.isEmpty()) {

@@ -43,6 +43,13 @@ public class DishesListFragment extends Fragment implements DishesListRVAdapter.
         DishesListFragment fragment = new DishesListFragment();
         return fragment;
     }
+    public static DishesListFragment newInstance(String tupe) {
+        Bundle args = new Bundle();
+        args.putString("tupe",tupe);
+        DishesListFragment fragment = new DishesListFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Nullable
     @Override
@@ -56,9 +63,18 @@ public class DishesListFragment extends Fragment implements DishesListRVAdapter.
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
         resList = new ArrayList<>();
-        for (IngredientFromParse ing : CookingFragment.getAllIngredients()) {
-            if (ing.isResult()) {
-                resList.add(ing);
+        if(getArguments()!=null&&getArguments().containsKey("tupe")){
+            String tupe=getArguments().getString("tupe");
+            for (IngredientFromParse ing : CookingFragment.getAllIngredients()) {
+                if(ing.isResult()&&ing.getTupe().equals(tupe)){
+                    resList.add(ing);
+                }
+            }
+        }else {
+            for (IngredientFromParse ing : CookingFragment.getAllIngredients()) {
+                if (ing.isResult()) {
+                    resList.add(ing);
+                }
             }
         }
         setAdapter(resList);
