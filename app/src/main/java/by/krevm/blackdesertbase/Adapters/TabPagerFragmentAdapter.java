@@ -27,7 +27,7 @@ public class TabPagerFragmentAdapter extends FragmentStatePagerAdapter {
         if(tabLength>2)
         switch (position){
             case 0:return DishesListFragment.newInstance("z");
-            case 1:return DishesListFragment.newInstance();
+            case 1:return DishesListFragment.newInstance("k");
             case 2:return DishesListFragment.newInstance("r");
             case 3:return IngredientsListFragment.newInstance();
         }else {
