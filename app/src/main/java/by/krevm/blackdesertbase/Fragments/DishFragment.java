@@ -64,7 +64,11 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
         TextView durationTextView = (TextView) view.findViewById(R.id.duration);
         EditText amountDishEditText = (EditText) view.findViewById(R.id.amountEdit);
 
-        durationTextView.setText("Время действия: " + dish.getDuration() + " мин.");
+        if(dish.getDuration()!=null) {
+            durationTextView.setText("Время действия: " + dish.getDuration() + " мин.");
+        }else {
+            durationTextView.setVisibility(View.GONE);
+        }
         String[] effects = dish.getEffects();
         if (effects != null) {
             switch (effects.length) {

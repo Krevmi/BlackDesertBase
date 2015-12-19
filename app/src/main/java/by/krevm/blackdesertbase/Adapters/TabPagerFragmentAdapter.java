@@ -2,7 +2,6 @@ package by.krevm.blackdesertbase.Adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import by.krevm.blackdesertbase.Fragments.DishesListFragment;
@@ -11,10 +10,11 @@ import by.krevm.blackdesertbase.Fragments.IngredientsListFragment;
 public class TabPagerFragmentAdapter extends FragmentStatePagerAdapter {
     String[] tabs;
     int tabLength;
-    public TabPagerFragmentAdapter(FragmentManager fm,String[] tabs) {
+
+    public TabPagerFragmentAdapter(FragmentManager fm, String[] tabs) {
         super(fm);
-        this.tabs=tabs;
-        tabLength =tabs.length;
+        this.tabs = tabs;
+        tabLength = tabs.length;
     }
 
     @Override
@@ -24,13 +24,18 @@ public class TabPagerFragmentAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if(tabLength>2)
-        switch (position){
-            case 0:return DishesListFragment.newInstance("z");
-            case 1:return DishesListFragment.newInstance("k");
-            case 2:return DishesListFragment.newInstance("r");
-            case 3:return IngredientsListFragment.newInstance();
-        }else {
+        if (tabLength > 2)
+            switch (position) {
+                case 0:
+                    return DishesListFragment.newInstance("z");
+                case 1:
+                    return DishesListFragment.newInstance("k");
+                case 2:
+                    return DishesListFragment.newInstance("r");
+                case 3:
+                    return IngredientsListFragment.newInstance();
+            }
+        else {
             switch (position) {
                 case 0:
                     return DishesListFragment.newInstance();
