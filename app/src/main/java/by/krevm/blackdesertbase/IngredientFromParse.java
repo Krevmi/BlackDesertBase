@@ -211,6 +211,7 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
         amount4 = in.readInt();
         amount5 = in.readInt();
         effects = in.createStringArray();
+        tupe = in.readString();
     }
 
     @Override
@@ -238,6 +239,7 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
         dest.writeInt(amount4);
         dest.writeInt(amount5);
         dest.writeStringArray(effects);
+        dest.writeString(tupe);
     }
 
     @SuppressWarnings("unused")

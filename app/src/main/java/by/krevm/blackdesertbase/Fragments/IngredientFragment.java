@@ -57,7 +57,11 @@ public class IngredientFragment extends Fragment implements DishesListRVAdapter.
             IngredientFromParse ing = getArguments().getParcelable("key");
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(ing.getName());
             descriptionTextView.setText(ing.getDescription());
-            acquisitionTextView.setText("Способ получения: " + ing.getAcquisition());
+            if(ing.getTupe().equals("k")){
+                acquisitionTextView.setText("Вероятность разрушения: " + ing.getAcquisition());
+            }else {
+                acquisitionTextView.setText("Способ получения: " + ing.getAcquisition());
+            }
             imageView.setImageBitmap(ing.getBmp());
             groupId = ing.getGroupId();
             objectId = ing.getObjectId();

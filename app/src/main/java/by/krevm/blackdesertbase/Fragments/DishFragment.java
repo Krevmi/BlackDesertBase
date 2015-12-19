@@ -74,8 +74,13 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
             switch (effects.length) {
                 case 1: {
                     effect1TextView.setText(effects[0]);
-                    effect2TextView.setVisibility(View.GONE);
-                    effect3TextView.setVisibility(View.GONE);
+                    if(dish.getTupe().equals("k")){
+                        effect2TextView.setText("Вероятность разрушения: "+dish.getAcquisition());
+                        effect3TextView.setVisibility(View.GONE);
+                    }else {
+                        effect2TextView.setVisibility(View.GONE);
+                        effect3TextView.setVisibility(View.GONE);
+                    }
                     break;
                 }
                 case 2: {
