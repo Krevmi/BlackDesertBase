@@ -33,8 +33,13 @@
         <item>Сытость питомца</item>
         <item>Энергия рабочего</item>
     </string-array>
-    <string-array name="zel_effects">
-        <item>Дружба</item>
-        <item></item>
+    <string-array name="stone_type">
+        <item>все</item>
+        <item>шлема</item>
+        <item>доспехов</item>
+        <item>перчаток</item>
+        <item>обуви</item>
+        <item>оружия</item>
+        <item>доп. оружия</item>
     </string-array>
 </resources>

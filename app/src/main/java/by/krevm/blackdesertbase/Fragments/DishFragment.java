@@ -2,6 +2,7 @@ package by.krevm.blackdesertbase.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,20 +17,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.parse.FindCallback;
-import com.parse.GetCallback;
-import com.parse.ParseException;
-import com.parse.ParseQuery;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import by.krevm.blackdesertbase.Adapters.DishesListRVAdapter;
 import by.krevm.blackdesertbase.Adapters.IngredientsInDishRVAdapter;
 import by.krevm.blackdesertbase.IngredientFromParse;
 import by.krevm.blackdesertbase.R;
-import by.krevm.blackdesertbase.Recipe;
 
 
 public class DishFragment extends Fragment implements DishesListRVAdapter.ItemClickListener {
@@ -50,11 +44,15 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dish_fragment, container, false);
         setHasOptionsMenu(true);
+        TabLayout tabLayout = (TabLayout) getActivity().findViewById(R.id.tab_layout);
+        tabLayout.setVisibility(View.GONE);
+
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if (getArguments() != null && getArguments().containsKey("key")) {
             dish = getArguments().getParcelable("key");
         }
+
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(dish.getName());
         HashMap<String, Integer> amount = new HashMap<>();
         ArrayList<IngredientFromParse> resList = new ArrayList<>();
@@ -64,20 +62,24 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
         TextView durationTextView = (TextView) view.findViewById(R.id.duration);
         EditText amountDishEditText = (EditText) view.findViewById(R.id.amountEdit);
 
-        if(dish.getDuration()!=null) {
+        if (dish.getDuration() != null) {
             durationTextView.setText("Время действия: " + dish.getDuration() + " мин.");
-        }else {
+        } else {
             durationTextView.setVisibility(View.GONE);
         }
         String[] effects = dish.getEffects();
         if (effects != null) {
             switch (effects.length) {
                 case 1: {
+                    System.out.println("case 1 " + dish.getTupe());
                     effect1TextView.setText(effects[0]);
-                    if(dish.getTupe().equals("k")){
-                        effect2TextView.setText("Вероятность разрушения: "+dish.getAcquisition());
+
+                    if (dish.getTupe() != null && dish.getTupe().equals("k")) {
+                        System.out.println("dish.getTupe().equals(\"k\")");
+                        effect2TextView.setText("Вероятность разрушения: " + dish.getAcquisition());
                         effect3TextView.setVisibility(View.GONE);
-                    }else {
+                    } else {
+                        System.out.println("dish.getTupe().equals(\"k\") else");
                         effect2TextView.setVisibility(View.GONE);
                         effect3TextView.setVisibility(View.GONE);
                     }
@@ -107,12 +109,15 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
         ImageView dishImage = (ImageView) view.findViewById(R.id.imageViewDishFragment);
         TextView dishDiscription = (TextView) view.findViewById(R.id.discription_dish);
         dishImage.setImageBitmap(dish.getBmp());
-        dishDiscription.setText(dish.getDescription());
+        if (dish.getTupe() != null && dish.getTupe().equals("k")) {
+            dishDiscription.setText("Используется для инкрустации " + dish.getDescription());
+        } else {
+            dishDiscription.setText(dish.getDescription());
+        }
         mRecyclerView = (RecyclerView) view.findViewById(R.id.ingredients_list_ii);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-
         for (IngredientFromParse ing : CookingFragment.allIngredients) {
 
             String ing1;
@@ -146,17 +151,15 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
         amountDishEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.length()!=0) {
+                if (s.length() != 0) {
                     int am = Integer.parseInt(s.toString());
                     adapter.setAmountDish(am);
                 }

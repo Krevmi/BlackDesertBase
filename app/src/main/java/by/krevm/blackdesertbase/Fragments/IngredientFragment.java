@@ -2,6 +2,7 @@ package by.krevm.blackdesertbase.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,7 +21,7 @@ import by.krevm.blackdesertbase.IngredientFromParse;
 import by.krevm.blackdesertbase.R;
 
 public class IngredientFragment extends Fragment implements DishesListRVAdapter.ItemClickListener {
-    TextView nameTextView, descriptionTextView, acquisitionTextView;
+    TextView descriptionTextView, acquisitionTextView;
     ImageView imageView;
     RecyclerView recyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -41,6 +42,8 @@ public class IngredientFragment extends Fragment implements DishesListRVAdapter.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.ingredient_fragment, container, false);
+        TabLayout tabLayout = (TabLayout) getActivity().findViewById(R.id.tab_layout);
+        tabLayout.setVisibility(View.GONE);
         setHasOptionsMenu(true);
         resList.clear();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -57,9 +60,9 @@ public class IngredientFragment extends Fragment implements DishesListRVAdapter.
             IngredientFromParse ing = getArguments().getParcelable("key");
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(ing.getName());
             descriptionTextView.setText(ing.getDescription());
-            if(ing.getTupe().equals("k")){
+            if (ing.getTupe() != null && ing.getTupe().equals("k")) {
                 acquisitionTextView.setText("Вероятность разрушения: " + ing.getAcquisition());
-            }else {
+            } else {
                 acquisitionTextView.setText("Способ получения: " + ing.getAcquisition());
             }
             imageView.setImageBitmap(ing.getBmp());
@@ -71,8 +74,9 @@ public class IngredientFragment extends Fragment implements DishesListRVAdapter.
             ingredientId = groupId;
         } else ingredientId = objectId;
         if (ingredientId.equals("g")) {//если инг. это группа
-            TextView listHeder= (TextView)view.findViewById(R.id.textView2);
+            TextView listHeder = (TextView) view.findViewById(R.id.textView2);
             listHeder.setText("Любое из:");
+            acquisitionTextView.setVisibility(View.GONE);
             for (IngredientFromParse ing : CookingFragment.allIngredients) {
                 if (ing.getGroupId() != null)
                     if (ing.getGroupId().equals(objectId)) {

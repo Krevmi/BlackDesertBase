@@ -38,9 +38,9 @@ public class IngredientsListFragment extends Fragment implements IngredientsList
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.ingredients_list_fragment, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.ingredients_list);
-        RecyclerView.ItemDecoration itemDecoration = new
+    /*    RecyclerView.ItemDecoration itemDecoration = new
                 DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST);
-        mRecyclerView.addItemDecoration(itemDecoration);
+        mRecyclerView.addItemDecoration(itemDecoration);*/
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);

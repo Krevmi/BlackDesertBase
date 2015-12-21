@@ -5,7 +5,6 @@ import android.graphics.BitmapFactory;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.parse.GetDataCallback;
 import com.parse.ParseClassName;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -25,27 +24,34 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
     private String duration;
     private String useIn;
     private String tupe;
+    private int description_id;
+
+    public int getDescription_id() {
+        description_id = getInt("description_id");
+        return description_id;
+    }
 
     public String getTupe() {
-        tupe=getString("tupe");
+        tupe = getString("tupe");
         return tupe;
     }
 
     public String getUseIn() {
-        useIn=getString("useIn");
+        useIn = getString("useIn");
         return useIn;
     }
 
     public String getDuration() {
-        duration= getString("duration");
+        duration = getString("duration");
         return duration;
     }
 
     public String[] getEffects() {
-        if(getString("effect")!=null) {
+        if (getString("effect") != null) {
             effects = getString("effect").split("/");
             return effects;
-        }return null;
+        }
+        return null;
     }
 
     public String getIng1Id() {
@@ -180,16 +186,16 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
         if (getIng2Id().equals(ingredientId)) return true;
         if (getIng3Id().equals(ingredientId)) return true;
         if (getIng4Id().equals(ingredientId)) return true;
-        if (getIng5Id().equals(ingredientId)) return true;
-        return false;
+        return getIng5Id().equals(ingredientId);
     }
 
-    public boolean hasEffect(String effect){
-        if(getString("effect")!=null){
-        if(getString("effect").contains(effect)) {
-            return true;
+    public boolean hasEffect(String effect) {
+        if (getString("effect") != null) {
+            if (getString("effect").contains(effect)) {
+                return true;
+            }
         }
-        }return false;
+        return false;
     }
 
     protected IngredientFromParse(Parcel in) {
@@ -212,6 +218,7 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
         amount5 = in.readInt();
         effects = in.createStringArray();
         tupe = in.readString();
+        description_id = in.readInt();
     }
 
     @Override
@@ -240,6 +247,7 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
         dest.writeInt(amount5);
         dest.writeStringArray(effects);
         dest.writeString(tupe);
+        dest.writeInt(description_id);
     }
 
     @SuppressWarnings("unused")

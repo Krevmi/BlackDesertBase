@@ -65,8 +65,7 @@ public class Recipe extends ParseObject {
         if(getIng2().getObjectId().equals(objectId))return true;
         if(getIng3().getObjectId().equals(objectId))return true;
         if(getIng4().getObjectId().equals(objectId))return true;
-        if(getIng5().getObjectId().equals(objectId))return true;
+        return getIng5().getObjectId().equals(objectId);
 
-        return false;
     }
 }
