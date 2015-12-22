@@ -1,4 +1,4 @@
-package by.krevm.blackdesertbase.Fragments;
+package by.krevm.bdbase.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,10 +20,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import by.krevm.blackdesertbase.Adapters.DishesListRVAdapter;
-import by.krevm.blackdesertbase.Adapters.IngredientsInDishRVAdapter;
-import by.krevm.blackdesertbase.IngredientFromParse;
-import by.krevm.blackdesertbase.R;
+import by.krevm.bdbase.Adapters.DishesListRVAdapter;
+import by.krevm.bdbase.Adapters.IngredientsInDishRVAdapter;
+import by.krevm.bdbase.IngredientFromParse;
+import by.krevm.bdbase.R;
 
 
 public class DishFragment extends Fragment implements DishesListRVAdapter.ItemClickListener {

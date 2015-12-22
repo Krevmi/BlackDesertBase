@@ -1,4 +1,4 @@
-package by.krevm.blackdesertbase.Fragments;
+package by.krevm.bdbase.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,10 +16,9 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import by.krevm.blackdesertbase.Adapters.IngredientsListRVAdapter;
-import by.krevm.blackdesertbase.DividerItemDecoration;
-import by.krevm.blackdesertbase.IngredientFromParse;
-import by.krevm.blackdesertbase.R;
+import by.krevm.bdbase.Adapters.IngredientsListRVAdapter;
+import by.krevm.bdbase.IngredientFromParse;
+import by.krevm.bdbase.R;
 
 
 public class IngredientsListFragment extends Fragment implements IngredientsListRVAdapter.ItemClickListener, SearchView.OnQueryTextListener {

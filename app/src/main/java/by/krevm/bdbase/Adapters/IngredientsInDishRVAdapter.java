@@ -1,23 +1,17 @@
-package by.krevm.blackdesertbase.Adapters;
+package by.krevm.bdbase.Adapters;
 
-import android.animation.ValueAnimator;
-import android.renderscript.Sampler;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.LinearInterpolator;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.ListIterator;
 
-import by.krevm.blackdesertbase.IngredientFromParse;
-import by.krevm.blackdesertbase.R;
+import by.krevm.bdbase.IngredientFromParse;
+import by.krevm.bdbase.R;
 
 public class IngredientsInDishRVAdapter extends RecyclerView.Adapter<IngredientsInDishRVAdapter.ViewHolder> {
     private ArrayList<IngredientFromParse> ingredients = new ArrayList<>();

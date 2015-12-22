@@ -1,4 +1,4 @@
-package by.krevm.blackdesertbase.Fragments;
+package by.krevm.bdbase.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,10 +18,10 @@ import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 
-import by.krevm.blackdesertbase.Adapters.TabPagerFragmentAdapter;
-import by.krevm.blackdesertbase.IngredientFromParse;
-import by.krevm.blackdesertbase.ParseAppInitialization;
-import by.krevm.blackdesertbase.R;
+import by.krevm.bdbase.Adapters.TabPagerFragmentAdapter;
+import by.krevm.bdbase.IngredientFromParse;
+import by.krevm.bdbase.ParseAppInitialization;
+import by.krevm.bdbase.R;
 
 
 public class CookingFragment extends Fragment {
@@ -48,7 +48,6 @@ public class CookingFragment extends Fragment {
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         if (getArguments() != null && getArguments().containsKey("titleID")) {
             titleId = getArguments().getInt("titleID");
-
             actionBar.setTitle(titleId);
             mTracker.setScreenName("Fragment " + getString(titleId));
             mTracker.send(new HitBuilders.ScreenViewBuilder().build());

@@ -1,4 +1,4 @@
-package by.krevm.blackdesertbase;
+package by.krevm.bdbase;
 
 public class Dish {
     private IngredientFromParse ing1, ing2, ing3, ing4, ing5, res1, res2;

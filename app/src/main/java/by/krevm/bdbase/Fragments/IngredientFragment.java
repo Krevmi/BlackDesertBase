@@ -1,4 +1,4 @@
-package by.krevm.blackdesertbase.Fragments;
+package by.krevm.bdbase.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,9 +16,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import by.krevm.blackdesertbase.Adapters.DishesListRVAdapter;
-import by.krevm.blackdesertbase.IngredientFromParse;
-import by.krevm.blackdesertbase.R;
+import by.krevm.bdbase.Adapters.DishesListRVAdapter;
+import by.krevm.bdbase.IngredientFromParse;
+import by.krevm.bdbase.R;
 
 public class IngredientFragment extends Fragment implements DishesListRVAdapter.ItemClickListener {
     TextView descriptionTextView, acquisitionTextView;
@@ -59,10 +59,14 @@ public class IngredientFragment extends Fragment implements DishesListRVAdapter.
         if (getArguments() != null && getArguments().containsKey("key")) {
             IngredientFromParse ing = getArguments().getParcelable("key");
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(ing.getName());
-            descriptionTextView.setText(ing.getDescription());
+
             if (ing.getTupe() != null && ing.getTupe().equals("k")) {
+                String[]effects=ing.getEffects();
+                descriptionTextView.setText("Используется для инкрустации "+ing.getDescription()+
+                " "+effects[0]);
                 acquisitionTextView.setText("Вероятность разрушения: " + ing.getAcquisition());
             } else {
+                descriptionTextView.setText(ing.getDescription());
                 acquisitionTextView.setText("Способ получения: " + ing.getAcquisition());
             }
             imageView.setImageBitmap(ing.getBmp());

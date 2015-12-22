@@ -1,4 +1,4 @@
-package by.krevm.blackdesertbase.Adapters;
+package by.krevm.bdbase.Adapters;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,34 +14,33 @@ import com.parse.ParseException;
 
 import java.util.ArrayList;
 
-import by.krevm.blackdesertbase.IngredientFromParse;
-import by.krevm.blackdesertbase.R;
+import by.krevm.bdbase.IngredientFromParse;
+import by.krevm.bdbase.R;
 
-/**
- * Created by Krevm on 19.12.2015.
- */
-public class ResultListRVAdapterTwoLines extends RecyclerView.Adapter<ResultListRVAdapterTwoLines.ViewHolder> {
-    ArrayList<IngredientFromParse> ingredients;
+public class DishesListRVAdapter extends RecyclerView.Adapter<DishesListRVAdapter.ViewHolder> {
+    private ArrayList<IngredientFromParse> ingredients;
+
     public ItemClickListener clickListener;
 
-    public ResultListRVAdapterTwoLines(ArrayList<IngredientFromParse> ingredients) {
+    public DishesListRVAdapter(ArrayList<IngredientFromParse> ingredients) {
         this.ingredients = new ArrayList<>(ingredients);
     }
+
     public interface ItemClickListener {
         void onClick(View view, IngredientFromParse ing);
     }
+
     public void setClickListener(ItemClickListener itemClickListener) {
         this.clickListener = itemClickListener;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        public TextView dishNameTextView,effectTextView;
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        public TextView dishNameTextView;
         public ImageView img;
 
         public ViewHolder(View v) {
             super(v);
             dishNameTextView = (TextView) v.findViewById(R.id.nameIngredientInDishTextView);
-            effectTextView = (TextView)v.findViewById(R.id.effectTextView);
             img = (ImageView) v.findViewById(R.id.image_dish_item);
             v.setOnClickListener(this);
         }
@@ -53,18 +52,16 @@ public class ResultListRVAdapterTwoLines extends RecyclerView.Adapter<ResultList
     }
 
     @Override
-    public ResultListRVAdapterTwoLines.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public DishesListRVAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.two_line_item_list, parent, false);
+                .inflate(R.layout.dish_list_item_layout, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
 
     @Override
-    public void onBindViewHolder(final ResultListRVAdapterTwoLines.ViewHolder holder, int position) {
+    public void onBindViewHolder(final DishesListRVAdapter.ViewHolder holder, int position) {
         holder.dishNameTextView.setText(ingredients.get(position).getName());
-        String[] effect =ingredients.get(position).getEffects();
-        holder.effectTextView.setText(effect[0]);
         ingredients.get(position).getImg().getDataInBackground(new GetDataCallback() {
             @Override
             public void done(byte[] bytes, ParseException e) {
@@ -78,8 +75,9 @@ public class ResultListRVAdapterTwoLines extends RecyclerView.Adapter<ResultList
     public int getItemCount() {
         return ingredients.size();
     }
-    public void setFilteredList(ArrayList<IngredientFromParse> ingredients){
-        this.ingredients=new ArrayList<>(ingredients);
+
+    public void setFilteredList(ArrayList<IngredientFromParse> ingredients) {
+        this.ingredients = new ArrayList<>(ingredients);
         notifyDataSetChanged();
     }
 }

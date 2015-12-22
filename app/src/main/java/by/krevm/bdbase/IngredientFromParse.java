@@ -1,4 +1,4 @@
-package by.krevm.blackdesertbase;
+package by.krevm.bdbase;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

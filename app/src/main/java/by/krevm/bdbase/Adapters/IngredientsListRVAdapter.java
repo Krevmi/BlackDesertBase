@@ -1,4 +1,4 @@
-package by.krevm.blackdesertbase.Adapters;
+package by.krevm.bdbase.Adapters;
 
 
 import android.content.Context;
@@ -17,8 +17,8 @@ import com.parse.ParseException;
 
 import java.util.ArrayList;
 
-import by.krevm.blackdesertbase.IngredientFromParse;
-import by.krevm.blackdesertbase.R;
+import by.krevm.bdbase.IngredientFromParse;
+import by.krevm.bdbase.R;
 
 public class IngredientsListRVAdapter extends RecyclerView.Adapter<IngredientsListRVAdapter.ViewHolder> {
     ArrayList<IngredientFromParse> ingredients;

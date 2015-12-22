@@ -1,12 +1,12 @@
-package by.krevm.blackdesertbase.Fragments;
+package by.krevm.bdbase.Fragments;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import by.krevm.blackdesertbase.MainActivity;
-import by.krevm.blackdesertbase.R;
+import by.krevm.bdbase.MainActivity;
+import by.krevm.bdbase.R;
 
 public class MainActivityNoInternet extends AppCompatActivity {
 

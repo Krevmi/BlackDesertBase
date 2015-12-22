@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Black Desert Base</string>
+    <string name="app_name">bdBase</string>
     <string name="cookery">Кулинария</string>
     <string name="alchemy">Алхимия</string>
     <string name="ingredients">Ингредиенты</string>

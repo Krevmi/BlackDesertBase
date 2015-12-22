@@ -1,4 +1,4 @@
-package by.krevm.blackdesertbase;
+package by.krevm.bdbase;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,8 +16,8 @@ import android.view.MenuItem;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
-import by.krevm.blackdesertbase.Fragments.CookingFragment;
-import by.krevm.blackdesertbase.Fragments.MainActivityNoInternet;
+import by.krevm.bdbase.Fragments.CookingFragment;
+import by.krevm.bdbase.Fragments.MainActivityNoInternet;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;

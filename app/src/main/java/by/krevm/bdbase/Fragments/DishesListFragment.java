@@ -1,4 +1,4 @@
-package by.krevm.blackdesertbase.Fragments;
+package by.krevm.bdbase.Fragments;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -22,10 +22,9 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import by.krevm.blackdesertbase.Adapters.DishesListRVAdapter;
-import by.krevm.blackdesertbase.DividerItemDecoration;
-import by.krevm.blackdesertbase.IngredientFromParse;
-import by.krevm.blackdesertbase.R;
+import by.krevm.bdbase.Adapters.DishesListRVAdapter;
+import by.krevm.bdbase.IngredientFromParse;
+import by.krevm.bdbase.R;
 
 
 public class DishesListFragment extends Fragment implements DishesListRVAdapter.ItemClickListener, SearchView.OnQueryTextListener {
@@ -163,7 +162,7 @@ public class DishesListFragment extends Fragment implements DishesListRVAdapter.
                 if (position != 0) {
                     String[] stoneType = getResources().getStringArray(R.array.stone_type);
                     for (IngredientFromParse ing : resList) {
-                        if (ing.getDescription().contains(stoneType[position])) {
+                        if (ing.getDescription().equals(stoneType[position])) {
                             ingFilteredList.add(ing);
                         }
                     }

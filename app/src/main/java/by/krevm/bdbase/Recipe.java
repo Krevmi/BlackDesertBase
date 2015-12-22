@@ -1,4 +1,4 @@
-package by.krevm.blackdesertbase;
+package by.krevm.bdbase;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;

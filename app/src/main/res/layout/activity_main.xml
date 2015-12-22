@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#eeeeee"
     android:fitsSystemWindows="true"
-    tools:context="by.krevm.blackdesertbase.MainActivity">
+    tools:context="by.krevm.bdbase.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

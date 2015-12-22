@@ -1,4 +1,4 @@
-package by.krevm.blackdesertbase;
+package by.krevm.bdbase;
 
 import org.junit.Test;
 
