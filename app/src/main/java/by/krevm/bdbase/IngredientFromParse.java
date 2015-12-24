@@ -2,6 +2,7 @@ package by.krevm.bdbase;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -25,6 +26,19 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
     private String useIn;
     private String tupe;
     private int description_id;
+    private int grade;
+
+    public int getGrade() {
+        grade=getInt("grade");
+        switch (grade){
+            case 1:return Color.parseColor("#212121");
+            case 2:return Color.parseColor("#007c16");
+            case 3:return Color.parseColor("#1f4ea0");
+            case 4:return Color.parseColor("#e6c13c");
+            case 5:return Color.parseColor("#cf5700");
+        }
+        return grade;
+    }
 
     public int getDescription_id() {
         description_id = getInt("description_id");
@@ -219,6 +233,7 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
         effects = in.createStringArray();
         tupe = in.readString();
         description_id = in.readInt();
+        grade= in.readInt();
     }
 
     @Override
@@ -248,6 +263,7 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
         dest.writeStringArray(effects);
         dest.writeString(tupe);
         dest.writeInt(description_id);
+        dest.writeInt(grade);
     }
 
     @SuppressWarnings("unused")
