@@ -27,6 +27,12 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
     private String tupe;
     private int description_id;
     private int grade;
+    private String reloading;
+
+    public String getReloading() {
+        reloading=getString("reloadingS");
+        return reloading;
+    }
 
     public int getGrade() {
         grade=getInt("grade");
@@ -234,6 +240,7 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
         tupe = in.readString();
         description_id = in.readInt();
         grade= in.readInt();
+        reloading = in.readString();
     }
 
     @Override
@@ -264,6 +271,7 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
         dest.writeString(tupe);
         dest.writeInt(description_id);
         dest.writeInt(grade);
+        dest.writeString(reloading);
     }
 
     @SuppressWarnings("unused")

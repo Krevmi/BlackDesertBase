@@ -83,6 +83,16 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="4dp" />
+        <TextView
+            android:id="@+id/reloadingTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10 мин."
+            android:textColor="@color/osn_text_white"
+            android:textSize="15sp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="4dp"/>
         <LinearLayout
             android:id="@+id/layout_for_text"
             android:orientation="horizontal"
