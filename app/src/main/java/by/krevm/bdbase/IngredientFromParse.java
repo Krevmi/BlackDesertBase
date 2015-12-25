@@ -37,7 +37,7 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
     public int getGrade() {
         grade=getInt("grade");
         switch (grade){
-            case 1:return Color.parseColor("#212121");
+            case 1:return Color.parseColor("#ffffff");
             case 2:return Color.parseColor("#007c16");
             case 3:return Color.parseColor("#1f4ea0");
             case 4:return Color.parseColor("#e6c13c");
