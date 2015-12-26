@@ -9,10 +9,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +24,7 @@ import java.util.HashMap;
 
 import by.krevm.bdbase.Adapters.DishesListRVAdapter;
 import by.krevm.bdbase.Adapters.IngredientsInDishRVAdapter;
+import by.krevm.bdbase.Adapters.IngredientsInDishWithHeaderRVAdapter;
 import by.krevm.bdbase.IngredientFromParse;
 import by.krevm.bdbase.R;
 
@@ -30,6 +33,7 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
     private IngredientFromParse dish;
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
+    IngredientsInDishWithHeaderRVAdapter adapter = null;
 
     public static DishFragment newInstance(IngredientFromParse ing) {
         Bundle args = new Bundle();
@@ -60,11 +64,10 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
         TextView effect2TextView = (TextView) view.findViewById(R.id.effect2);
         TextView effect3TextView = (TextView) view.findViewById(R.id.effect3);
         TextView durationTextView = (TextView) view.findViewById(R.id.duration);
-        EditText amountDishEditText = (EditText) view.findViewById(R.id.amountEdit);
-        TextView reloadingTextView = (TextView)view.findViewById(R.id.reloadingTextView);
-        if (dish.getReloading()!=null){
-            reloadingTextView.setText(dish.getReloading());
-        }else {
+        TextView reloadingTextView = (TextView) view.findViewById(R.id.reloadingTextView);
+        if (dish.getReloading() != null) {
+            reloadingTextView.setText("Перезарядка: " + dish.getReloading());
+        } else {
             reloadingTextView.setVisibility(View.GONE);
         }
 
@@ -151,26 +154,9 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
             }
         }
 
-        final IngredientsInDishRVAdapter adapter = new IngredientsInDishRVAdapter(resList, amount);
+        adapter = new IngredientsInDishWithHeaderRVAdapter(resList, amount);
         adapter.setClickListener(this);
         mRecyclerView.setAdapter(adapter);
-        amountDishEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.length() != 0) {
-                    int am = Integer.parseInt(s.toString());
-                    adapter.setAmountDish(am);
-                }
-            }
-        });
         return view;
     }
 

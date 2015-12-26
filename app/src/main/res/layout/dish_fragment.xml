@@ -93,45 +93,6 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="4dp"/>
-        <LinearLayout
-            android:id="@+id/layout_for_text"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Для приготовления "
-                android:textColor="@color/osn_text_white"
-                android:paddingLeft="10dp"
-                android:paddingTop="6dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="4dp"
-                android:textSize="15sp"
-                android:id="@+id/textView3" />
-            <EditText
-                android:id="@+id/amountEdit"
-                android:text="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-
-                android:focusableInTouchMode="true"
-                android:selectAllOnFocus="true"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="шт. необходимо:"
-                android:textColor="@color/osn_text_white"
-                android:paddingLeft="10dp"
-                android:paddingTop="6dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="4dp"
-                android:textSize="15sp"
-               />
-        </LinearLayout>
-
-
 
     </LinearLayout>
 
