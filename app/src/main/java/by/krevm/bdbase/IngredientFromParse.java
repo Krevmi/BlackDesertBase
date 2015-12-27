@@ -28,20 +28,35 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
     private int description_id;
     private int grade;
     private String reloading;
+    private String effect;
+
+    public String getEffect() {
+        if(getTupe()!=null){
+            if(getTupe().equals("k")||getTupe().equals("z")){
+                effect = getString("effect");
+                return effect;
+            }
+        } return null;
+    }
 
     public String getReloading() {
-        reloading=getString("reloadingS");
+        reloading = getString("reloadingS");
         return reloading;
     }
 
     public int getGrade() {
-        grade=getInt("grade");
-        switch (grade){
-            case 1:return Color.parseColor("#ffffff");
-            case 2:return Color.parseColor("#4CAF50");
-            case 3:return Color.parseColor("#03A9F4");
-            case 4:return Color.parseColor("#e6c13c");
-            case 5:return Color.parseColor("#cf5700");
+        grade = getInt("grade");
+        switch (grade) {
+            case 1:
+                return Color.parseColor("#ffffff");
+            case 2:
+                return Color.parseColor("#4CAF50");
+            case 3:
+                return Color.parseColor("#03A9F4");
+            case 4:
+                return Color.parseColor("#e6c13c");
+            case 5:
+                return Color.parseColor("#cf5700");
         }
         return grade;
     }
@@ -239,7 +254,7 @@ public class IngredientFromParse extends ParseObject implements Parcelable {
         effects = in.createStringArray();
         tupe = in.readString();
         description_id = in.readInt();
-        grade= in.readInt();
+        grade = in.readInt();
         reloading = in.readString();
     }
 

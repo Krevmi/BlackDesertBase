@@ -135,7 +135,13 @@ public class DishesListFragment extends Fragment implements DishesListRVAdapter.
         ArrayList<IngredientFromParse> ingFilteredList = new ArrayList<>();
         for (IngredientFromParse ing : resList) {
             String name = ing.getName().toLowerCase();
-            if (name.contains(queryQ)) {
+            String effect=null;
+            if(ing.getEffect()!=null) {
+                effect = ing.getEffect().toLowerCase();
+                if (name.contains(queryQ) || effect.contains(queryQ)) {
+                    ingFilteredList.add(ing);
+                }
+            }else if (name.contains(queryQ)) {
                 ingFilteredList.add(ing);
             }
         }
