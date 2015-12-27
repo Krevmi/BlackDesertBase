@@ -7,9 +7,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColorPrimary">@color/textBlackPrimary</item>
-        <item name="android:textColorSecondary">@color/textBlackSecondary</item>
-        <item name="android:colorBackground">#eeeeee</item>
+        <item name="android:textColorPrimary">@color/osn_text_white</item>
+        <item name="android:textColorSecondary">@color/dop_text_white</item>
+
         <item name="android:actionBarStyle">@style/Theme.MyApp.ActionBar</item>
     </style>
     <style name="AppThemeGrin" parent="Theme.AppCompat.Light.NoActionBar">

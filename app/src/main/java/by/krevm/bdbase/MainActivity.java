@@ -2,6 +2,7 @@ package by.krevm.bdbase;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -11,8 +12,11 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             finish();
         }
         setContentView(R.layout.activity_main);
+
         ParseAppInitialization application = (ParseAppInitialization) getApplication();
         mTracker = application.getDefaultTracker();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -47,6 +52,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         initNavigationView();
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().add(R.id.container, CookingFragment.newInstance(R.string.cookery)).commit();
+
+    /*    AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("meizu-m1_note-0123456789ABCDEF").build();
+        mAdView.loadAd(adRequest);*/
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -87,7 +96,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //  toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
-        // navigationView.getMenu().findItem(R.id.nav_meny_cooking).setChecked(true);
+        SharedPreferences sp = getSharedPreferences("firstLaunch",0);
+        boolean isFirstStart = sp.getBoolean("key", true);
+        if(isFirstStart) {
+            drawerLayout.openDrawer(Gravity.LEFT);
+            SharedPreferences.Editor e = sp.edit();
+            // we save the value "false", indicating that it is no longer the first appstart
+            e.putBoolean("key", false);
+            e.commit();
+        }
     }
 
     @Override

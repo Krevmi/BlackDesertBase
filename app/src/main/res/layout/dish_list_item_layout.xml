@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/image_dish_item"
@@ -12,21 +12,21 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
 
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
         android:background="@mipmap/fon" />
 
     <TextView
+        android:id="@+id/nameIngredientInDishTextView"
+        style="@style/TextSingleLine"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/nameIngredientInDishTextView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        style="@style/TextSingleLine"
-         />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:singleLine="true"/>
 
 </RelativeLayout>

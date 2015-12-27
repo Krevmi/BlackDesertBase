@@ -45,9 +45,6 @@ public class IngredientsInDishWithHeaderRVAdapter extends RecyclerView.Adapter<R
         }
         return null;
     }
-    private IngredientFromParse getItem (int position) {
-        return ingredients.get (position);
-    }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
@@ -57,7 +54,6 @@ public class IngredientsInDishWithHeaderRVAdapter extends RecyclerView.Adapter<R
             headerHolder.amountDishEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 @Override
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-
                     if(actionId == EditorInfo.IME_ACTION_DONE){
                         System.out.println("IME_ACTION_DONE");
                         if(v.getText().length()>0) {
@@ -138,7 +134,7 @@ public class IngredientsInDishWithHeaderRVAdapter extends RecyclerView.Adapter<R
 
         @Override
         public void onClick(View v) {
-            clickListener.onClick(v, ingredients.get(getPosition()));
+            clickListener.onClick(v, ingredients.get(getPosition()-1));
         }
     }
     class HeaderViewHolder extends RecyclerView.ViewHolder{

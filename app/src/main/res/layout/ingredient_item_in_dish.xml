@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:orientation="vertical"
-    android:background="@color/windowBackground">
+    android:background="@color/windowBackground"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/image_dish_item"
@@ -12,37 +12,37 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
         android:background="@mipmap/fon" />
 
     <TextView
+        android:id="@+id/nameIngredientInDishTextView"
+        style="@style/TextSingleLine"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/nameIngredientInDishTextView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        style="@style/TextSingleLine"
-        />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:singleLine="true"/>
 
     <EditText
         android:id="@+id/amountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/osn_text_white"
-        android:text="3"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:paddingRight="10dp"
-        android:textSize="25sp"
-        android:inputType="number"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         android:imeOptions="actionDone"
-        android:selectAllOnFocus="true"/>
+        android:inputType="number"
+        android:paddingRight="10dp"
+        android:selectAllOnFocus="true"
+        android:text="3"
+        android:textColor="@color/osn_text_white"
+        android:textSize="25sp" />
 
 </RelativeLayout>

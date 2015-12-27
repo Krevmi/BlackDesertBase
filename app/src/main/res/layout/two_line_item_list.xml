@@ -12,34 +12,37 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
 
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
         android:background="@mipmap/fon" />
 
     <TextView
+        android:id="@+id/nameIngredientInDishTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/nameIngredientInDishTextView"
-
-        android:text="Name"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="72dp"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        android:singleLine="true"
+        android:text="Name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="16sp" />
+
     <TextView
         android:id="@+id/effectTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="@color/dop_text_white"
-        android:text="effect"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_marginBottom="8dp"
         android:layout_marginLeft="72dp"
-        android:layout_marginBottom="8dp" />
+        android:singleLine="true"
+        android:text="effect"
+        android:textColor="@color/dop_text_white"
+        android:textSize="14sp" />
 
 </RelativeLayout>
