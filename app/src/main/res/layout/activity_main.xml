@@ -51,7 +51,8 @@
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             ads:adSize="BANNER"
-            ads:adUnitId="@string/fist_banner">
+            ads:adUnitId="@string/fist_banner"
+            android:layout_gravity="center_horizontal">
         </com.google.android.gms.ads.AdView>
     </LinearLayout>
 

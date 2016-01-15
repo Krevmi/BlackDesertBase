@@ -7,9 +7,7 @@ import com.google.android.gms.analytics.Tracker;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
-/**
- * Created by Krevm on 28.11.2015.
- */
+
 public class ParseAppInitialization extends android.app.Application {
     private Tracker mTracker;
 

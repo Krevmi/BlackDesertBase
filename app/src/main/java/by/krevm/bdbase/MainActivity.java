@@ -21,6 +21,7 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
 import by.krevm.bdbase.Fragments.CookingFragment;
+import by.krevm.bdbase.Fragments.FavoritesFragment;
 import by.krevm.bdbase.Fragments.MainActivityNoInternet;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,13 +29,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FragmentManager fragmentManager;
     Toolbar toolbar;
     private Tracker mTracker;
+    public static final String SHARED_PREF = "sp";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if(networkInfo != null && networkInfo.isConnected()) {
+        if (networkInfo != null && networkInfo.isConnected()) {
         } else {
             Intent intent = new Intent(this, MainActivityNoInternet.class);
             startActivity(intent);
@@ -53,16 +56,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().add(R.id.container, CookingFragment.newInstance(R.string.cookery)).commit();
 
-    /*    AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("meizu-m1_note-0123456789ABCDEF").build();
-        mAdView.loadAd(adRequest);*/
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("meizu-m1_note-0123456789ABCDEF").addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        mAdView.loadAd(adRequest);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
-        fragmentManager.popBackStack("stek",FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        fragmentManager.popBackStack("stek", FragmentManager.POP_BACK_STACK_INCLUSIVE);
         int id = item.getItemId();
         if (id == R.id.nav_meny_cooking) {
             mTracker.send(new HitBuilders.EventBuilder()
@@ -76,8 +79,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .setAction("Алхимия")
                     .build());
             fragmentManager.beginTransaction().replace(R.id.container, CookingFragment.newInstance(R.string.alchemy)).commit();
-        } else if (id == R.id.nav_meny_cooking) {
-
+        } else if (id == R.id.nav_meny_favorites) {
+            fragmentManager.beginTransaction().replace(R.id.container, FavoritesFragment.newInstance(R.string.favorites)).commit();
         } else if (id == R.id.nav_meny_cooking) {
 
         } else if (id == R.id.nav_meny_cooking) {
@@ -95,13 +98,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //    drawerLayout.setDrawerListener(toggle);
         //  toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        navigationView.setCheckedItem(R.id.nav_meny_cooking);
         navigationView.setNavigationItemSelectedListener(this);
-        SharedPreferences sp = getSharedPreferences("firstLaunch",0);
+        SharedPreferences sp = getSharedPreferences(SHARED_PREF, 0);
         boolean isFirstStart = sp.getBoolean("key", true);
-        if(isFirstStart) {
+        if (isFirstStart) {
             drawerLayout.openDrawer(Gravity.LEFT);
             SharedPreferences.Editor e = sp.edit();
-            // we save the value "false", indicating that it is no longer the first appstart
             e.putBoolean("key", false);
             e.commit();
         }

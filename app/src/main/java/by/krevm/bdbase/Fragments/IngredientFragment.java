@@ -100,7 +100,7 @@ public class IngredientFragment extends Fragment implements DishesListRVAdapter.
     }
 
     private void setAdapter(ArrayList<IngredientFromParse> dishesList) {
-        DishesListRVAdapter mAdapter = new DishesListRVAdapter(dishesList);
+        DishesListRVAdapter mAdapter = new DishesListRVAdapter(dishesList,getActivity());
         mAdapter.setClickListener(this);
         recyclerView.setAdapter(mAdapter);
     }

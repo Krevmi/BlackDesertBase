@@ -2,20 +2,18 @@ package by.krevm.bdbase.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,8 +21,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import by.krevm.bdbase.Adapters.DishesListRVAdapter;
-import by.krevm.bdbase.Adapters.IngredientsInDishRVAdapter;
 import by.krevm.bdbase.Adapters.IngredientsInDishWithHeaderRVAdapter;
+import by.krevm.bdbase.Data.SharedPreference;
 import by.krevm.bdbase.IngredientFromParse;
 import by.krevm.bdbase.R;
 
@@ -34,6 +32,7 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     IngredientsInDishWithHeaderRVAdapter adapter = null;
+    private SharedPreference sharedPreference;
 
     public static DishFragment newInstance(IngredientFromParse ing) {
         Bundle args = new Bundle();
@@ -47,10 +46,11 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dish_fragment, container, false);
+        sharedPreference = new SharedPreference(getActivity());
+      //  System.out.println("favorite "+sharedPreference.getFavorites(getActivity()).size());
         setHasOptionsMenu(true);
         TabLayout tabLayout = (TabLayout) getActivity().findViewById(R.id.tab_layout);
         tabLayout.setVisibility(View.GONE);
-
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if (getArguments() != null && getArguments().containsKey("key")) {
@@ -58,6 +58,28 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
         }
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(dish.getName());
+        final FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        if(sharedPreference.isFavorite(dish.getParseId())) {
+            fab.setImageResource(R.mipmap.ic_star);
+        }else {
+            fab.setImageResource(R.mipmap.ic_star_outline);
+        }
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sharedPreference.clickFavorite(dish.getParseId());
+                if(sharedPreference.isFavorite(dish.getParseId())) {
+                    fab.setImageResource(R.mipmap.ic_star);
+                    Snackbar snackbar = Snackbar.make(view,"Добавленно в избранное",Snackbar.LENGTH_SHORT);
+                    snackbar.show();
+                }else {
+                    fab.setImageResource(R.mipmap.ic_star_outline);
+                    Snackbar snackbar = Snackbar.make(view,"Удалено из избранного",Snackbar.LENGTH_SHORT);
+                    snackbar.show();
+                }
+            }
+        });
         HashMap<String, Integer> amount = new HashMap<>();
         ArrayList<IngredientFromParse> resList = new ArrayList<>();
         TextView effect1TextView = (TextView) view.findViewById(R.id.effect1);
@@ -182,4 +204,5 @@ public class DishFragment extends Fragment implements DishesListRVAdapter.ItemCl
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

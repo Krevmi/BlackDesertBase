@@ -30,10 +30,10 @@ import by.krevm.bdbase.R;
 public class DishesListFragment extends Fragment implements DishesListRVAdapter.ItemClickListener, SearchView.OnQueryTextListener {
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
-    DishesListRVAdapter mAdapter;
-    ArrayList<IngredientFromParse> resList;
-    int filterPosition = 0;
-    String tupe;
+    private DishesListRVAdapter mAdapter;
+    private ArrayList<IngredientFromParse> resList;
+    private int filterPosition = 0;
+    private String tupe;
 
     public DishesListFragment() {
         setArguments(new Bundle());
@@ -89,8 +89,8 @@ public class DishesListFragment extends Fragment implements DishesListRVAdapter.
         if (getArguments() != null && getArguments().containsKey("filter")) {
             onFilterList(getArguments().getInt("filter"));
         }
-        if(tupe!=null){
-            if(tupe.equals("z")||tupe.equals("r")){
+        if (tupe != null) {
+            if (tupe.equals("z") || tupe.equals("r")) {
                 fab.setVisibility(View.GONE);
             }
         }
@@ -98,7 +98,7 @@ public class DishesListFragment extends Fragment implements DishesListRVAdapter.
     }
 
     private void setAdapter(ArrayList<IngredientFromParse> list) {
-        mAdapter = new DishesListRVAdapter(list);
+        mAdapter = new DishesListRVAdapter(list,getActivity());
         mAdapter.setClickListener(this);
         mRecyclerView.setAdapter(mAdapter);
     }
@@ -135,13 +135,13 @@ public class DishesListFragment extends Fragment implements DishesListRVAdapter.
         ArrayList<IngredientFromParse> ingFilteredList = new ArrayList<>();
         for (IngredientFromParse ing : resList) {
             String name = ing.getName().toLowerCase();
-            String effect=null;
-            if(ing.getEffect()!=null) {
+            String effect = null;
+            if (ing.getEffect() != null) {
                 effect = ing.getEffect().toLowerCase();
                 if (name.contains(queryQ) || effect.contains(queryQ)) {
                     ingFilteredList.add(ing);
                 }
-            }else if (name.contains(queryQ)) {
+            } else if (name.contains(queryQ)) {
                 ingFilteredList.add(ing);
             }
         }

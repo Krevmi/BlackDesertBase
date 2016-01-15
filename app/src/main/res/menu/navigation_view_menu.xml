@@ -9,6 +9,10 @@
             android:id="@+id/nav_meny_alchemy"
             android:icon="@mipmap/ic_beaker_outline"
             android:title="@string/alchemy" />
+        <item
+            android:id="@+id/nav_meny_favorites"
+            android:icon="@mipmap/ic_star"
+            android:title="@string/favorites" />
     </group>
 
 </menu>

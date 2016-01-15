@@ -1,105 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/dish_head"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <ImageView
-        android:id="@+id/imageViewDishFragment"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@mipmap/fon" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/discription_dish"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:text="Описание блюда"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/osn_text_white"
-        android:textIsSelectable="false"
-        android:textSize="16sp"
-        android:layout_marginTop="5dp"
-        android:paddingRight="10dp" />
-</LinearLayout>
-
-
-        <TextView
-            android:id="@+id/effect1"
+        <LinearLayout
+            android:id="@+id/dish_head"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Эффект1"
-            android:textColor="@color/osn_text_white"
-            android:paddingLeft="10dp"
-            android:paddingTop="5dp"
-            android:paddingRight="10dp"
-            android:textSize="15sp"
-           />
+            android:background="@color/colorPrimary"
+            android:orientation="vertical"
+            android:paddingBottom="10dp">
 
-        <TextView
-            android:id="@+id/effect2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Эффект2"
-            android:textColor="@color/osn_text_white"
-            android:textSize="15sp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="2dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/effect3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Эффект3"
-            android:textColor="@color/osn_text_white"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="2dp"
-            android:textSize="15sp" />
+                <ImageView
+                    android:id="@+id/imageViewDishFragment"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@mipmap/fon" />
 
-        <TextView
-            android:id="@+id/duration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="90 мин"
-            android:textColor="@color/osn_text_white"
-            android:textSize="15sp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="4dp" />
-        <TextView
-            android:id="@+id/reloadingTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="10 мин."
-            android:textColor="@color/osn_text_white"
-            android:textSize="15sp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="4dp"/>
+                <TextView
+                    android:id="@+id/discription_dish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Описание блюда"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/osn_text_white"
+                    android:textIsSelectable="false"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/effect1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:text="Эффект1"
+                android:textColor="@color/osn_text_white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/effect2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="2dp"
+                android:text="Эффект2"
+                android:textColor="@color/osn_text_white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/effect3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="2dp"
+                android:text="Эффект3"
+                android:textColor="@color/osn_text_white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="4dp"
+                android:text="90 мин"
+                android:textColor="@color/osn_text_white"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/reloadingTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="4dp"
+                android:text="10 мин."
+                android:textColor="@color/osn_text_white"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/ingredients_list_ii"
+            android:layout_width="match_parent"
+        android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:paddingTop="8dp"></android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/dish_head"
+        app:layout_anchorGravity="bottom|end"
+        android:layout_margin="16dp"
+        app:fabSize="mini"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/ingredients_list_ii"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </android.support.v7.widget.RecyclerView>
-
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
